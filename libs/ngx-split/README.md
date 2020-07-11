@@ -1,4 +1,4 @@
-# ngx-split [![npm latest version](https://img.shields.io/npm/v/ngx-split/latest.svg?style=flat-square)](https://www.npmjs.com/package/ngx-split) [![NPM next version](https://img.shields.io/npm/v/ngx-split/next.svg?style=flat-square)](https://www.npmjs.com/package/ngx-split) [![Travis build](https://img.shields.io/travis/com/beeman/ngx-split/master.svg?style=flat-square&label=Cypress+E2E+tests)](https://travis-ci.com/beeman/ngx-split)
+# ngx-split [![npm latest version](https://img.shields.io/npm/v/ngx-split/latest.svg?style=flat-square)](https://www.npmjs.com/package/ngx-split) [![NPM next version](https://img.shields.io/npm/v/ngx-split/next.svg?style=flat-square)](https://www.npmjs.com/package/ngx-split) [![Travis build](https://img.shields.io/travis/com/beeman/ngx-split/main.svg?style=flat-square&label=Cypress+E2E+tests)](https://travis-ci.com/beeman/ngx-split)
 
 Angular UI library to split views and allow dragging to resize areas using CSS flexbox layout.
 

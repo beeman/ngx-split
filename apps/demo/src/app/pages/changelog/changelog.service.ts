@@ -7,8 +7,8 @@ import { catchError, map } from 'rxjs/operators';
 @Injectable()
 export class ChangelogService {
   private readonly url =
-    'https://raw.githubusercontent.com/beeman/ngx-split/master/CHANGELOG.md';
-  // else 'https://rawgit.com/beeman/ngx-split/master/CHANGELOG.md';
+    'https://raw.githubusercontent.com/beeman/ngx-split/main/CHANGELOG.md';
+  // else 'https://rawgit.com/beeman/ngx-split/main/CHANGELOG.md';
   private cachedHtml = '';
 
   constructor(private http: HttpClient) {

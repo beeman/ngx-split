@@ -3,7 +3,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { AComponent } from './AComponent';
 
 @Component({
-  selector: 'ui-ex-dir_rtl',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'split-example-page',

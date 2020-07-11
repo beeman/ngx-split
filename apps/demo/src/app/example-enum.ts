@@ -12,5 +12,4 @@ export enum ExampleEnum {
   GEEK = 'geek',
   DIR = 'dir',
   WORKSPACE = 'workspace',
-  LAZY = 'lazy',
 }

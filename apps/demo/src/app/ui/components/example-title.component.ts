@@ -4,9 +4,9 @@ import {
   SafeHtml,
   SafeResourceUrl,
 } from '@angular/platform-browser';
+import { ExampleEnum } from '../../example-enum';
 
 import { examples } from '../../example-list';
-import { ExampleEnum } from '../../example-enum';
 
 @Component({
   selector: 'ui-example-title',
@@ -23,18 +23,11 @@ import { ExampleEnum } from '../../example-enum';
   ],
   template: ` <h4>
       <div [innerHTML]="label"></div>
-      <a
-        *ngIf="_type !== exampleEnum.LAZY"
-        class="btn btn-secondary"
-        [href]="url"
-        target="_blank"
-        >View code</a
-      >
+      <a class="btn btn-secondary" [href]="url" target="_blank">View code</a>
     </h4>
     <hr />`,
 })
 export class ExampleTitleComponent {
-  exampleEnum = ExampleEnum;
   label: SafeHtml;
   url: SafeResourceUrl;
 

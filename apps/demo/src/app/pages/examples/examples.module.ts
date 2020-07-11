@@ -10,10 +10,8 @@ import { DirRtlComponent } from './component/dir-rtl.component';
 import { GeekDemoComponent } from './component/geek-demo.component';
 import { GutterClickComponent } from './component/gutter-click.component';
 import { IframeComponent } from './component/iframe.component';
-import { LazyComponent } from './component/lazy.component';
-import { MinMaxComponent } from './component/minMax.component';
+import { MinMaxComponent } from './component/min-max.component';
 import { NestedComponent } from './component/nested.component';
-
 import { SimpleComponent } from './component/simple.component';
 import { SyncComponent } from './component/sync.component';
 import { TogglingDomAndVisibleComponent } from './component/toggling-dom-and-visible.component';
@@ -22,20 +20,19 @@ import { WorkspaceLocalstorageComponent } from './component/workspace-localstora
 
 @NgModule({
   declarations: [
-    SimpleComponent,
+    ClassAccessComponent,
+    CustomGutterStyleComponent,
+    DirRtlComponent,
+    GeekDemoComponent,
+    GutterClickComponent,
+    IframeComponent,
     MinMaxComponent,
     NestedComponent,
-    IframeComponent,
-    TransitionsComponent,
+    SimpleComponent,
     SyncComponent,
-    CustomGutterStyleComponent,
     TogglingDomAndVisibleComponent,
-    GutterClickComponent,
-    ClassAccessComponent,
-    GeekDemoComponent,
-    DirRtlComponent,
+    TransitionsComponent,
     WorkspaceLocalstorageComponent,
-    LazyComponent,
   ],
   imports: [RouterModule.forChild([...examples]), UiModule],
   providers: [
