@@ -28,6 +28,9 @@
     "demo-e2e": {
       "tags": [],
       "implicitDependencies": ["demo"]
+    },
+    "ngx-split": {
+      "tags": []
     }
   }
 }

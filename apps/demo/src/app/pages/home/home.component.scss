@@ -1,0 +1,20 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 80px 0 50px 0;
+}
+
+h1 {
+  color: #ffc421;
+  margin-bottom: 30px;
+}
+h1 > small {
+  color: #000000;
+}
+
+.jumbotron {
+  margin-bottom: 0;
+}
+.jumbotron > div {
+  margin: 20px;
+}

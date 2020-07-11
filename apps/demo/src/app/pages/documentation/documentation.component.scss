@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 50px 0;
+}
+h4 {
+  margin: 20px 0;
+}
+.sel {
+  font-size: 16px;
+  color: #adadad;
+}
+tr > th {
+  color: #adadad;
+}
+tr > th:first-child,
+.selContent {
+  font-weight: bold;
+  color: #ffc421;
+}
+tr > td:first-child {
+  font-weight: bold;
+}

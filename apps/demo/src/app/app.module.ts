@@ -1,25 +1,22 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { routes } from './app.routes';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(
-      [
-        {
-          path: '',
-          loadChildren: () =>
-            import('./pages/home/home.module').then((m) => m.HomeModule),
-        },
-      ],
-      { initialNavigation: 'enabled' }
-    ),
+    BrowserAnimationsModule,
+    HttpClientModule,
+    UiModule,
+    RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
