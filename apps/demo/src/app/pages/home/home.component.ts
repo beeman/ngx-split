@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   code1 = `npm install ngx-split`;
 
-  code2 = `import { AngularSplitModule } from 'ngx-split';
+  code2 = `import { NgxSplitModule } from 'ngx-split';
 
 @NgModule({
   imports: [
-    AngularSplitModule.forRoot(),
+    NgxSplitModule.forRoot(),
     ...
   ],
   ...
