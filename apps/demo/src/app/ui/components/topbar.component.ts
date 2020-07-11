@@ -14,7 +14,7 @@ import { examples } from '../../example-list';
       a.navbar-brand,
       a.navbar-brand:hover {
         font-weight: bold;
-        color: #ffc421;
+        color: #e83e8c;
       }
 
       li > a {
@@ -44,7 +44,7 @@ import { examples } from '../../example-list';
     `,
   ],
   host: {
-    class: 'navbar navbar-expand-lg navbar-dark bg-dark',
+    class: 'navbar navbar-expand-lg fixed-top navbar-dark bg-dark',
   },
   template: `
     <a class="navbar-brand" href="#">ngx-split</a>
