@@ -10,14 +10,14 @@ import { SplitAreaDirective } from './directive/splitArea.directive';
   exports: [SplitComponent, SplitAreaDirective],
 })
 export class NgxSplitModule {
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<NgxSplitModule> {
     return {
       ngModule: NgxSplitModule,
       providers: [],
     };
   }
 
-  public static forChild(): ModuleWithProviders {
+  public static forChild(): ModuleWithProviders<NgxSplitModule> {
     return {
       ngModule: NgxSplitModule,
       providers: [],
