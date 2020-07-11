@@ -1,6 +1,6 @@
 {
   "name": "ngx-split",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "scripts": {
     "ng": "nx",
@@ -56,6 +56,7 @@
     "@nrwl/workspace": "9.5.1",
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
+    "angular-cli-ghpages": "^0.6.2",
     "codelyzer": "~5.0.1",
     "cypress": "^4.1.0",
     "dotenv": "6.2.0",
