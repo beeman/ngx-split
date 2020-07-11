@@ -1,6 +1,6 @@
 {
-  "name": "@ngx-split/ngx-split",
-  "version": "0.0.1",
+  "name": "ngx-split",
+  "version": "1.0.0",
   "nxpm": {
     "allowPackageName": true
   },
@@ -8,5 +8,6 @@
     "@angular/common": "^9.1.0",
     "@angular/core": "^9.1.0",
     "tslib": "^1.10.0"
-  }
+  },
+  "license": "Apache-2.0"
 }
