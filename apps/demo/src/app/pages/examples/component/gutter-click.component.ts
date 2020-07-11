@@ -19,13 +19,13 @@ import { formatDate } from '../format-date';
   },
   styles: [
     `
-      as-split.as-transition.as-init:not(.as-dragging)
+      ngx-split.ngx-transition.ngx-init:not(.ngx-dragging)
         ::ng-deep
-        > .as-split-gutter,
-      as-split.as-transition.as-init:not(.as-dragging) > .as-split-area {
+        > .ngx-split-gutter,
+      ngx-split.ngx-transition.ngx-init:not(.ngx-dragging) > .ngx-split-area {
         transition: flex-basis 1.5s !important;
       }
-      as-split.as-disabled ::ng-deep > .as-split-gutter {
+      ngx-split.ngx-disabled ::ng-deep > .ngx-split-gutter {
         cursor: pointer !important;
       }
 
@@ -60,7 +60,7 @@ import { formatDate } from '../format-date';
     <div class="container">
       <ui-example-title [type]="exampleEnum.CLICK"></ui-example-title>
       <div class="split-example">
-        <as-split
+        <ngx-split
           #mySplit
           [disabled]="isDisabled"
           gutterSize="10"
@@ -73,14 +73,14 @@ import { formatDate } from '../format-date';
           (gutterDblClick)="log('gutterDblClick', $event)"
           (transitionEnd)="log('transitionEnd', $event)"
         >
-          <as-split-area
+          <ngx-split-area
             *ngFor="let a of areas"
             [size]="a.size"
             [order]="a.order"
           >
             <p>{{ a.content }}</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <br />
       <div class="btns">
@@ -123,7 +123,7 @@ import { formatDate } from '../format-date';
         </div>
       </div>
       <div class="logs">
-        <p>All <code>as-split</code> events emitted:</p>
+        <p>All <code>ngx-split</code> events emitted:</p>
         <ul #logs>
           <li *ngFor="let l of logMessages" [ngClass]="l.type">{{ l.text }}</li>
         </ul>

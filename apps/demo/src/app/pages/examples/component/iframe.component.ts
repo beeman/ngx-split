@@ -9,7 +9,7 @@ import { AComponent } from './AComponent';
   },
   styles: [
     `
-      .as-split-area > div {
+      .ngx-split-area > div {
         position: relative;
         height: 100%;
         overflow: hidden;
@@ -29,12 +29,12 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.IFRAME"></ui-example-title>
       <div class="split-example" style="height: 400px;">
-        <as-split
+        <ngx-split
           direction="horizontal"
           (dragStart)="showIframeHider = true"
           (dragEnd)="showIframeHider = false"
         >
-          <as-split-area size="40">
+          <ngx-split-area size="40">
             <div>
               <iframe
                 src="https://beeman.github.io/ngx-split"
@@ -47,8 +47,8 @@ import { AComponent } from './AComponent';
                 class="hack-iframe-hider"
               ></div>
             </div>
-          </as-split-area>
-          <as-split-area size="60">
+          </ngx-split-area>
+          <ngx-split-area size="60">
             <div>
               <iframe
                 src="https://beeman.github.io/ngx-split"
@@ -61,8 +61,8 @@ import { AComponent } from './AComponent';
                 class="hack-iframe-hider"
               ></div>
             </div>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
     </div>`,
 })

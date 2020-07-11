@@ -11,14 +11,14 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.NESTED"></ui-example-title>
       <div class="split-example" style="height: 400px;">
-        <as-split
+        <ngx-split
           direction="horizontal"
           restrictMove="true"
           [useTransition]="true"
         >
-          <as-split-area size="40">
-            <as-split direction="vertical" restrictMove="true">
-              <as-split-area>
+          <ngx-split-area size="40">
+            <ngx-split direction="vertical" restrictMove="true">
+              <ngx-split-area>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -26,8 +26,8 @@ import { AComponent } from './AComponent';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </as-split-area>
-              <as-split-area>
+              </ngx-split-area>
+              <ngx-split-area>
                 <p>
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
@@ -44,8 +44,8 @@ import { AComponent } from './AComponent';
                   molestiae consequatur, vel illum qui dolorem eum fugiat quo
                   voluptas nulla pariatur?
                 </p>
-              </as-split-area>
-              <as-split-area>
+              </ngx-split-area>
+              <ngx-split-area>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -53,12 +53,12 @@ import { AComponent } from './AComponent';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </as-split-area>
-            </as-split>
-          </as-split-area>
-          <as-split-area size="60">
-            <as-split direction="vertical" restrictMove="true">
-              <as-split-area size="25">
+              </ngx-split-area>
+            </ngx-split>
+          </ngx-split-area>
+          <ngx-split-area size="60">
+            <ngx-split direction="vertical" restrictMove="true">
+              <ngx-split-area size="25">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -66,8 +66,8 @@ import { AComponent } from './AComponent';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </as-split-area>
-              <as-split-area size="75">
+              </ngx-split-area>
+              <ngx-split-area size="75">
                 <p>
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
@@ -84,10 +84,10 @@ import { AComponent } from './AComponent';
                   molestiae consequatur, vel illum qui dolorem eum fugiat quo
                   voluptas nulla pariatur?
                 </p>
-              </as-split-area>
-            </as-split>
-          </as-split-area>
-        </as-split>
+              </ngx-split-area>
+            </ngx-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
     </div>`,
 })

@@ -83,21 +83,29 @@ const defaultConfig: IConfig = {
       }
     `,
   ],
-  template: ` <as-split
+  template: ` <ngx-split
     *ngIf="config"
     direction="horizontal"
     [disabled]="config.disabled"
     (dragEnd)="onDragEnd(-1, $event)"
   >
     <ng-template ngFor let-column [ngForOf]="config.columns" let-icol="index">
-      <as-split-area *ngIf="column.visible" [order]="icol" [size]="column.size">
-        <as-split
+      <ngx-split-area
+        *ngIf="column.visible"
+        [order]="icol"
+        [size]="column.size"
+      >
+        <ngx-split
           direction="vertical"
           [disabled]="config.disabled"
           (dragEnd)="onDragEnd(icol, $event)"
         >
           <ng-template ngFor let-row [ngForOf]="column.rows" let-irow="index">
-            <as-split-area *ngIf="row.visible" [order]="irow" [size]="row.size">
+            <ngx-split-area
+              *ngIf="row.visible"
+              [order]="irow"
+              [size]="row.size"
+            >
               <div [ngSwitch]="row.type" class="bloc">
                 <div *ngSwitchCase="'doc'" class="explanations">
                   <ui-example-title
@@ -138,12 +146,12 @@ const defaultConfig: IConfig = {
                   <p>{{ row.type }}</p>
                 </div>
               </div>
-            </as-split-area>
+            </ngx-split-area>
           </ng-template>
-        </as-split>
-      </as-split-area>
+        </ngx-split>
+      </ngx-split-area>
     </ng-template>
-  </as-split>`,
+  </ngx-split>`,
 })
 export class WorkspaceLocalstorageComponent extends AComponent
   implements OnInit {

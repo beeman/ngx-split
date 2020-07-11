@@ -154,33 +154,33 @@ export class DocumentationComponent {
 
   readonly cssClasses = {
     split: [
-      { name: 'as-init', details: 'Added after component initialization.' },
+      { name: 'ngx-init', details: 'Added after component initialization.' },
       {
-        name: 'as-horizontal / as-vertical',
-        details: 'Depends on <code>&lt;as-split [direction]="x"&gt;</code>.',
+        name: 'ngx-horizontal / ngx-vertical',
+        details: 'Depends on <code>&lt;ngx-split [direction]="x"&gt;</code>.',
       },
       {
-        name: 'as-disabled',
-        details: 'Added when <code>&lt;as-split [disabled]="true"&gt;</code>.',
+        name: 'ngx-disabled',
+        details: 'Added when <code>&lt;ngx-split [disabled]="true"&gt;</code>.',
       },
       {
-        name: 'as-transition',
+        name: 'ngx-transition',
         details:
-          'Added when <code>&lt;as-split [useTransition]="true"&gt;</code>.',
+          'Added when <code>&lt;ngx-split [useTransition]="true"&gt;</code>.',
       },
-      { name: 'as-dragging', details: 'Added while a gutter is dragged.' },
+      { name: 'ngx-dragging', details: 'Added while a gutter is dragged.' },
     ],
     area: [
-      { name: 'as-split-area', details: 'Added on all areas.' },
+      { name: 'ngx-split-area', details: 'Added on all areas.' },
       {
-        name: 'as-hidden',
+        name: 'ngx-hidden',
         details:
-          'Added when <code>&lt;as-split-area [visible]="false"&gt;</code>.',
+          'Added when <code>&lt;ngx-split-area [visible]="false"&gt;</code>.',
       },
     ],
     gutter: [
-      { name: 'as-split-gutter', details: 'Added on all gutters.' },
-      { name: 'as-dragged', details: 'Added on gutter while dragged.' },
+      { name: 'ngx-split-gutter', details: 'Added on all gutters.' },
+      { name: 'ngx-dragged', details: 'Added on gutter while dragged.' },
     ],
   };
 }

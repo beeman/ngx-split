@@ -68,7 +68,7 @@ import {
  */
 
 @Component({
-  selector: 'as-split',
+  selector: 'ngx-split',
   exportAs: 'asSplit',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: [`./split.component.scss`],
@@ -82,7 +82,7 @@ import {
       <div
         *ngIf="last === false"
         #gutterEls
-        class="as-split-gutter"
+        class="ngx-split-gutter"
         [style.flex-basis.px]="gutterSize"
         [style.order]="index * 2 + 1"
         (mousedown)="startDragging($event, index * 2 + 1, index + 1)"
@@ -90,7 +90,7 @@ import {
         (mouseup)="clickGutter($event, index + 1)"
         (touchend)="clickGutter($event, index + 1)"
       >
-        <div class="as-split-gutter-icon"></div>
+        <div class="ngx-split-gutter-icon"></div>
       </div>
     </ng-template>`,
 })
@@ -100,10 +100,10 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   @Input() set direction(v: 'horizontal' | 'vertical') {
     this._direction = v === 'vertical' ? 'vertical' : 'horizontal';
 
-    this.renderer.addClass(this.elRef.nativeElement, `as-${this._direction}`);
+    this.renderer.addClass(this.elRef.nativeElement, `ngx-${this._direction}`);
     this.renderer.removeClass(
       this.elRef.nativeElement,
-      `as-${this._direction === 'vertical' ? 'horizontal' : 'vertical'}`
+      `ngx-${this._direction === 'vertical' ? 'horizontal' : 'vertical'}`
     );
 
     this.build(false, false);
@@ -120,10 +120,10 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   @Input() set unit(v: 'percent' | 'pixel') {
     this._unit = v === 'pixel' ? 'pixel' : 'percent';
 
-    this.renderer.addClass(this.elRef.nativeElement, `as-${this._unit}`);
+    this.renderer.addClass(this.elRef.nativeElement, `ngx-${this._unit}`);
     this.renderer.removeClass(
       this.elRef.nativeElement,
-      `as-${this._unit === 'pixel' ? 'percent' : 'pixel'}`
+      `ngx-${this._unit === 'pixel' ? 'percent' : 'pixel'}`
     );
 
     this.build(false, true);
@@ -179,8 +179,8 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this._useTransition = getInputBoolean(v);
 
     if (this._useTransition)
-      this.renderer.addClass(this.elRef.nativeElement, 'as-transition');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'as-transition');
+      this.renderer.addClass(this.elRef.nativeElement, 'ngx-transition');
+    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-transition');
   }
 
   get useTransition(): boolean {
@@ -195,8 +195,8 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this._disabled = getInputBoolean(v);
 
     if (this._disabled)
-      this.renderer.addClass(this.elRef.nativeElement, 'as-disabled');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'as-disabled');
+      this.renderer.addClass(this.elRef.nativeElement, 'ngx-disabled');
+    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-disabled');
   }
 
   get disabled(): boolean {
@@ -275,7 +275,7 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       // To avoid transition at first rendering
       setTimeout(() =>
-        this.renderer.addClass(this.elRef.nativeElement, 'as-init')
+        this.renderer.addClass(this.elRef.nativeElement, 'ngx-init')
       );
     });
   }
@@ -661,10 +661,10 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this.displayedAreas.forEach((area) => area.component.lockEvents());
 
     this.isDragging = true;
-    this.renderer.addClass(this.elRef.nativeElement, 'as-dragging');
+    this.renderer.addClass(this.elRef.nativeElement, 'ngx-dragging');
     this.renderer.addClass(
       this.gutterEls.toArray()[this.snapshot.gutterNum - 1].nativeElement,
-      'as-dragged'
+      'ngx-dragged'
     );
 
     this.notify('start', this.snapshot.gutterNum);
@@ -818,10 +818,10 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
       this.notify('end', this.snapshot.gutterNum);
     }
 
-    this.renderer.removeClass(this.elRef.nativeElement, 'as-dragging');
+    this.renderer.removeClass(this.elRef.nativeElement, 'ngx-dragging');
     this.renderer.removeClass(
       this.gutterEls.toArray()[this.snapshot.gutterNum - 1].nativeElement,
-      'as-dragged'
+      'ngx-dragged'
     );
     this.snapshot = null;
 

@@ -22,8 +22,8 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.DIR"></ui-example-title>
       <div class="split-example">
-        <as-split [dir]="dir">
-          <as-split-area size="20">
+        <ngx-split [dir]="dir">
+          <ngx-split-area size="20">
             <p>
               1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -31,8 +31,8 @@ import { AComponent } from './AComponent';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </as-split-area>
-          <as-split-area size="40">
+          </ngx-split-area>
+          <ngx-split-area size="40">
             <p>
               2. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -47,8 +47,8 @@ import { AComponent } from './AComponent';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-          <as-split-area size="40">
+          </ngx-split-area>
+          <ngx-split-area size="40">
             <p>
               3. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -63,8 +63,8 @@ import { AComponent } from './AComponent';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <br />
       <div class="btns">

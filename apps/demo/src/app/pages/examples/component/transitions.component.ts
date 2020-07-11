@@ -55,15 +55,15 @@ import { formatDate } from '../format-date';
         background-color: #e8e8e8;
       }
 
-      .as-split-area {
+      .ngx-split-area {
         background: lightgrey;
       }
 
-      .as-split-area.as-min {
+      .ngx-split-area.ngx-min {
         background: green;
       }
 
-      .as-split-area.as-max {
+      .ngx-split-area.ngx-max {
         background: red;
       }
 
@@ -74,12 +74,12 @@ import { formatDate } from '../format-date';
       :host
         .ex2
         ::ng-deep
-        .as-transition.as-init:not(.as-dragging)
-        > .as-split-area,
+        .ngx-transition.ngx-init:not(.ngx-dragging)
+        > .ngx-split-area,
       :host
         ::ng-deep
-        .as-transition.as-init:not(.as-dragging)
-        > .as-split-gutter {
+        .ngx-transition.ngx-init:not(.ngx-dragging)
+        > .ngx-split-gutter {
         transition: flex-basis 1s !important;
       }
     `,
@@ -88,7 +88,7 @@ import { formatDate } from '../format-date';
     <div class="container">
       <ui-example-title [type]="exampleEnum.TRANSITION"></ui-example-title>
       <div class="split-example">
-        <as-split
+        <ngx-split
           direction="horizontal"
           disabled="true"
           [useTransition]="action.useTransition"
@@ -99,7 +99,7 @@ import { formatDate } from '../format-date';
           "
           (transitionEnd)="log($event)"
         >
-          <as-split-area [visible]="action.a1v" [size]="action.a1s" order="1">
+          <ngx-split-area [visible]="action.a1v" [size]="action.a1s" order="1">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -107,8 +107,8 @@ import { formatDate } from '../format-date';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </as-split-area>
-          <as-split-area [visible]="action.a2v" [size]="action.a2s" order="2">
+          </ngx-split-area>
+          <ngx-split-area [visible]="action.a2v" [size]="action.a2s" order="2">
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -123,8 +123,8 @@ import { formatDate } from '../format-date';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-          <as-split-area [visible]="action.a3v" [size]="action.a3s" order="3">
+          </ngx-split-area>
+          <ngx-split-area [visible]="action.a3v" [size]="action.a3s" order="3">
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -139,8 +139,8 @@ import { formatDate } from '../format-date';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <br />
       <div class="btns">
@@ -202,8 +202,8 @@ import { formatDate } from '../format-date';
       <hr />
       <br />
       <div class="split-example ex2" style="height: 150px;">
-        <as-split useTransition="true" unit="pixel">
-          <as-split-area
+        <ngx-split useTransition="true" unit="pixel">
+          <ngx-split-area
             size="200"
             minSize="200"
             order="1"
@@ -213,8 +213,8 @@ import { formatDate } from '../format-date';
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             size="*"
             order="2"
             [visible]="only === 2 || only === 0"
@@ -223,8 +223,8 @@ import { formatDate } from '../format-date';
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: *</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             size="200"
             minSize="200"
             order="3"
@@ -234,12 +234,12 @@ import { formatDate } from '../format-date';
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <as-split useTransition="true" unit="percent">
-          <as-split-area
+        <ngx-split useTransition="true" unit="percent">
+          <ngx-split-area
             size="30"
             minSize="30"
             order="1"
@@ -249,8 +249,8 @@ import { formatDate } from '../format-date';
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             size="40"
             order="2"
             [visible]="only === 2 || only === 0"
@@ -259,8 +259,8 @@ import { formatDate } from '../format-date';
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: 40%</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             size="30"
             minSize="30"
             order="3"
@@ -270,8 +270,8 @@ import { formatDate } from '../format-date';
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <br />
       <hr />
@@ -299,30 +299,30 @@ import { formatDate } from '../format-date';
         </div>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <as-split useTransition="true" unit="pixel">
-          <as-split-area size="200" minSize="200" order="1" [visible]="keepA">
+        <ngx-split useTransition="true" unit="pixel">
+          <ngx-split-area size="200" minSize="200" order="1" [visible]="keepA">
             <p>A<br />size: 200px<br />minSize: 200px</p>
-          </as-split-area>
-          <as-split-area size="*" order="2" [visible]="keepB">
+          </ngx-split-area>
+          <ngx-split-area size="*" order="2" [visible]="keepB">
             <p>B<br />size: *</p>
-          </as-split-area>
-          <as-split-area size="200" minSize="200" order="3" [visible]="keepC">
+          </ngx-split-area>
+          <ngx-split-area size="200" minSize="200" order="3" [visible]="keepC">
             <p>C<br />size: 200px<br />minSize: 200px</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <as-split useTransition="true" unit="percent">
-          <as-split-area size="30" minSize="30" order="1" [visible]="keepA">
+        <ngx-split useTransition="true" unit="percent">
+          <ngx-split-area size="30" minSize="30" order="1" [visible]="keepA">
             <p>A<br />size: 30%<br />minSize: 30%</p>
-          </as-split-area>
-          <as-split-area size="40" order="2" [visible]="keepB">
+          </ngx-split-area>
+          <ngx-split-area size="40" order="2" [visible]="keepB">
             <p>B<br />size: 40%</p>
-          </as-split-area>
-          <as-split-area size="30" minSize="30" order="3" [visible]="keepC">
+          </ngx-split-area>
+          <ngx-split-area size="30" minSize="30" order="3" [visible]="keepC">
             <p>C<br />size: 30%<br />minSize: 30%</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
     </div>`,
 })

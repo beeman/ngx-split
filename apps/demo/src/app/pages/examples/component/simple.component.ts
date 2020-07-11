@@ -23,13 +23,13 @@ import { AComponent } from './AComponent';
       <ui-example-title [type]="exampleEnum.SIMPLE"></ui-example-title>
       <h5>Percent mode:</h5>
       <div class="split-example ex-percent">
-        <as-split
+        <ngx-split
           unit="percent"
           [direction]="direction"
           (dragEnd)="dragEnd('percent', $event)"
           #split="asSplit"
         >
-          <as-split-area size="30" #area1="asSplitArea">
+          <ngx-split-area size="30" #area1="asSplitArea">
             <h5>Initial size: <b>30%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area1 }}%</b>
@@ -41,8 +41,8 @@ import { AComponent } from './AComponent';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </as-split-area>
-          <as-split-area size="70" #area2="asSplitArea">
+          </ngx-split-area>
+          <ngx-split-area size="70" #area2="asSplitArea">
             <h5>Initial size: <b>70%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area2 }}%</b>
@@ -61,17 +61,17 @@ import { AComponent } from './AComponent';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <h5>Pixel mode:</h5>
       <div class="split-example ex-pixel">
-        <as-split
+        <ngx-split
           unit="pixel"
           [direction]="direction"
           (dragEnd)="dragEnd('pixel', $event)"
         >
-          <as-split-area size="120">
+          <ngx-split-area size="120">
             <h5>Initial size: <b>120px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area1 }}px</b>
@@ -81,8 +81,8 @@ import { AComponent } from './AComponent';
               irure dolor in reprehenderit in voluptate velit esse cillum dolore
               eu fugiat nulla pariatur.
             </p>
-          </as-split-area>
-          <as-split-area size="*">
+          </ngx-split-area>
+          <ngx-split-area size="*">
             <h5>Initial size: <b>*</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area2 }}</b>
@@ -101,8 +101,8 @@ import { AComponent } from './AComponent';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </as-split-area>
-          <as-split-area size="160">
+          </ngx-split-area>
+          <ngx-split-area size="160">
             <h5>Initial size: <b>160px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area3 }}px</b>
@@ -113,8 +113,8 @@ import { AComponent } from './AComponent';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <br />
       <div class="btns">

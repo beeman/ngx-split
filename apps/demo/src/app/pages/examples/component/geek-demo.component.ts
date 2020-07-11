@@ -10,7 +10,7 @@ import { AComponent } from './AComponent';
   },
   styles: [
     `
-      .as-split-area {
+      .ngx-split-area {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -61,7 +61,7 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.GEEK"></ui-example-title>
       <div class="split-example" style="background-color: #e5e0e0;">
-        <as-split
+        <ngx-split
           [direction]="d.dir"
           [restrictMove]="d.restrictMove"
           [gutterSize]="d.gutterSize"
@@ -78,16 +78,16 @@ import { AComponent } from './AComponent';
             [ngForTrackBy]="trackByFct"
             let-index="index"
           >
-            <as-split-area
+            <ngx-split-area
               *ngIf="area.present"
               [visible]="area.visible"
               [order]="index"
               [size]="area.size"
               [style.background-color]="area.color"
-              >{{ area.id }}</as-split-area
+              >{{ area.id }}</ngx-split-area
             >
           </ng-template>
-        </as-split>
+        </ngx-split>
       </div>
       <div class="opts-prop">
         <div>

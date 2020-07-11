@@ -21,29 +21,29 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.TOGGLE"></ui-example-title>
       <div class="split-example ex1" style="height: 150px;">
-        <as-split [gutterSize]="15" (dragEnd)="log('dragEnd', $event)">
-          <as-split-area
+        <ngx-split [gutterSize]="15" (dragEnd)="log('dragEnd', $event)">
+          <ngx-split-area
             *ngIf="action.isPresentA"
             [visible]="action.isVisibleA"
             [order]="0"
           >
             <p>A</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             *ngIf="action.isPresentB"
             [visible]="action.isVisibleB"
             [order]="1"
           >
             <p>B</p>
-          </as-split-area>
-          <as-split-area
+          </ngx-split-area>
+          <ngx-split-area
             *ngIf="action.isPresentC"
             [visible]="action.isVisibleC"
             [order]="2"
           >
             <p>C</p>
-          </as-split-area>
-        </as-split>
+          </ngx-split-area>
+        </ngx-split>
       </div>
       <p>Toggle <code>[visible]="boolean"</code> properties:</p>
       <div class="btns">

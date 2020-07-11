@@ -12,7 +12,7 @@ import { SplitComponent } from '../component/split.component';
 import { getInputPositiveNumber, getInputBoolean } from '../utils';
 
 @Directive({
-  selector: 'as-split-area, [as-split-area]',
+  selector: 'ngx-split-area, [ngx-split-area]',
   exportAs: 'asSplitArea',
 })
 export class SplitAreaDirective implements OnInit, OnDestroy {
@@ -93,10 +93,10 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
 
     if (this._visible) {
       this.split.showArea(this);
-      this.renderer.removeClass(this.elRef.nativeElement, 'as-hidden');
+      this.renderer.removeClass(this.elRef.nativeElement, 'ngx-hidden');
     } else {
       this.split.hideArea(this);
-      this.renderer.addClass(this.elRef.nativeElement, 'as-hidden');
+      this.renderer.addClass(this.elRef.nativeElement, 'ngx-hidden');
     }
   }
 
@@ -115,7 +115,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private split: SplitComponent
   ) {
-    this.renderer.addClass(this.elRef.nativeElement, 'as-split-area');
+    this.renderer.addClass(this.elRef.nativeElement, 'ngx-split-area');
   }
 
   public ngOnInit(): void {
@@ -152,12 +152,12 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     this.renderer.setStyle(this.elRef.nativeElement, 'flex-basis', basis);
 
     if (isMin === true)
-      this.renderer.addClass(this.elRef.nativeElement, 'as-min');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'as-min');
+      this.renderer.addClass(this.elRef.nativeElement, 'ngx-min');
+    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-min');
 
     if (isMax === true)
-      this.renderer.addClass(this.elRef.nativeElement, 'as-max');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'as-max');
+      this.renderer.addClass(this.elRef.nativeElement, 'ngx-max');
+    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-max');
   }
 
   public lockEvents(): void {

@@ -31,8 +31,8 @@ import { AComponent } from './AComponent';
   template: ` <div class="container">
     <ui-example-title [type]="exampleEnum.CODE"></ui-example-title>
     <div class="split-example">
-      <as-split>
-        <as-split-area [size]="75">
+      <ngx-split>
+        <ngx-split-area [size]="75">
           <p>
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -47,8 +47,8 @@ import { AComponent } from './AComponent';
             in ea voluptate velit esse quam nihil molestiae consequatur, vel
             illum qui dolorem eum fugiat quo voluptas nulla pariatur?
           </p>
-        </as-split-area>
-        <as-split-area [size]="3">
+        </ngx-split-area>
+        <ngx-split-area [size]="3">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -56,8 +56,8 @@ import { AComponent } from './AComponent';
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
           </p>
-        </as-split-area>
-        <as-split-area [visible]="false" [size]="18">
+        </ngx-split-area>
+        <ngx-split-area [visible]="false" [size]="18">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -65,8 +65,8 @@ import { AComponent } from './AComponent';
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
           </p>
-        </as-split-area>
-        <as-split-area [size]="4">
+        </ngx-split-area>
+        <ngx-split-area [size]="4">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -74,8 +74,8 @@ import { AComponent } from './AComponent';
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
           </p>
-        </as-split-area>
-      </as-split>
+        </ngx-split-area>
+      </ngx-split>
     </div>
     <br />
     <div class="btns">
