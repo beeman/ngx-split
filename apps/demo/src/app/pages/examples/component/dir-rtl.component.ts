@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IAreaDir } from 'ngx-split';
 
 import { AComponent } from './AComponent';
 
@@ -22,7 +23,7 @@ import { AComponent } from './AComponent';
       <ui-example-title [type]="exampleEnum.DIR"></ui-example-title>
       <div class="split-example">
         <ngx-split [dir]="dir">
-          <ngx-split-area size="20">
+          <ngx-split-area [size]="20">
             <p>
               1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -31,7 +32,7 @@ import { AComponent } from './AComponent';
               nulla pariatur.
             </p>
           </ngx-split-area>
-          <ngx-split-area size="40">
+          <ngx-split-area [size]="40">
             <p>
               2. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -47,7 +48,7 @@ import { AComponent } from './AComponent';
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
           </ngx-split-area>
-          <ngx-split-area size="40">
+          <ngx-split-area [size]="40">
             <p>
               3. Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -77,5 +78,5 @@ import { AComponent } from './AComponent';
     </div>`,
 })
 export class DirRtlComponent extends AComponent {
-  dir = 'rtl';
+  dir: IAreaDir = 'rtl';
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { cloneDeep } from 'lodash';
+import { getAreaSize, IOutputData } from 'ngx-split';
 
 import { AComponent } from './AComponent';
 
@@ -172,23 +173,22 @@ export class WorkspaceLocalstorageComponent extends AComponent
     localStorage.removeItem(this.localStorageName);
   }
 
-  onDragEnd(
-    columnindex: number,
-    e: { gutterNum: number; sizes: Array<number> }
-  ) {
+  onDragEnd(columnindex: number, e: IOutputData) {
     // Column dragged
     if (columnindex === -1) {
       // Set size for all visible columns
       this.config.columns
         .filter((c) => c.visible === true)
-        .forEach((column, index) => (column.size = e.sizes[index]));
+        .forEach(
+          (column, index) => (column.size = getAreaSize(e.sizes[index]))
+        );
     }
     // Row dragged
     else {
       // Set size for all visible rows from specified column
       this.config.columns[columnindex].rows
         .filter((r) => r.visible === true)
-        .forEach((row, index) => (row.size = e.sizes[index]));
+        .forEach((row, index) => (row.size = getAreaSize(e.sizes[index])));
     }
 
     this.saveLocalStorage();

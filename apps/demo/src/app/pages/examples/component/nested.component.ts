@@ -13,11 +13,11 @@ import { AComponent } from './AComponent';
       <div class="split-example" style="height: 400px;">
         <ngx-split
           direction="horizontal"
-          restrictMove="true"
+          [restrictMove]="true"
           [useTransition]="true"
         >
-          <ngx-split-area size="40">
-            <ngx-split direction="vertical" restrictMove="true">
+          <ngx-split-area [size]="40">
+            <ngx-split direction="vertical" [restrictMove]="true">
               <ngx-split-area>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
@@ -56,9 +56,9 @@ import { AComponent } from './AComponent';
               </ngx-split-area>
             </ngx-split>
           </ngx-split-area>
-          <ngx-split-area size="60">
-            <ngx-split direction="vertical" restrictMove="true">
-              <ngx-split-area size="25">
+          <ngx-split-area [size]="60">
+            <ngx-split direction="vertical" [restrictMove]="true">
+              <ngx-split-area [size]="25">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -67,7 +67,7 @@ import { AComponent } from './AComponent';
                   fugiat nulla pariatur.
                 </p>
               </ngx-split-area>
-              <ngx-split-area size="75">
+              <ngx-split-area [size]="75">
                 <p>
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque

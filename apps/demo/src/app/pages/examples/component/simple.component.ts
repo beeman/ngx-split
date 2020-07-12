@@ -29,7 +29,7 @@ import { AComponent } from './AComponent';
           (dragEnd)="dragEnd('percent', $event)"
           #split="ngxSplit"
         >
-          <ngx-split-area size="30" #area1="ngxSplitArea">
+          <ngx-split-area [size]="30" #area1="ngxSplitArea">
             <h5>Initial size: <b>30%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area1 }}%</b>
@@ -42,7 +42,7 @@ import { AComponent } from './AComponent';
               nulla pariatur.
             </p>
           </ngx-split-area>
-          <ngx-split-area size="70" #area2="ngxSplitArea">
+          <ngx-split-area [size]="70" #area2="ngxSplitArea">
             <h5>Initial size: <b>70%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area2 }}%</b>
@@ -71,7 +71,7 @@ import { AComponent } from './AComponent';
           [direction]="direction"
           (dragEnd)="dragEnd('pixel', $event)"
         >
-          <ngx-split-area size="120">
+          <ngx-split-area [size]="120">
             <h5>Initial size: <b>120px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area1 }}px</b>
@@ -102,7 +102,7 @@ import { AComponent } from './AComponent';
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
           </ngx-split-area>
-          <ngx-split-area size="160">
+          <ngx-split-area [size]="160">
             <h5>Initial size: <b>160px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area3 }}px</b>
@@ -134,7 +134,7 @@ export class SimpleComponent extends AComponent {
   @ViewChild('area1', { static: false }) area1: SplitAreaDirective;
   @ViewChild('area2', { static: false }) area2: SplitAreaDirective;
 
-  direction = 'horizontal';
+  direction: 'horizontal' | 'vertical' = 'horizontal';
   sizes = {
     percent: {
       area1: 30,
