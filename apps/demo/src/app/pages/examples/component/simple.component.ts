@@ -27,9 +27,9 @@ import { AComponent } from './AComponent';
           unit="percent"
           [direction]="direction"
           (dragEnd)="dragEnd('percent', $event)"
-          #split="asSplit"
+          #split="ngxSplit"
         >
-          <ngx-split-area size="30" #area1="asSplitArea">
+          <ngx-split-area size="30" #area1="ngxSplitArea">
             <h5>Initial size: <b>30%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area1 }}%</b>
@@ -42,7 +42,7 @@ import { AComponent } from './AComponent';
               nulla pariatur.
             </p>
           </ngx-split-area>
-          <ngx-split-area size="70" #area2="asSplitArea">
+          <ngx-split-area size="70" #area2="ngxSplitArea">
             <h5>Initial size: <b>70%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area2 }}%</b>

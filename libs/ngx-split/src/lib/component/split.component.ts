@@ -69,7 +69,7 @@ import {
 
 @Component({
   selector: 'ngx-split',
-  exportAs: 'asSplit',
+  exportAs: 'ngxSplit',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: [`./split.component.scss`],
   template: ` <ng-content></ng-content>

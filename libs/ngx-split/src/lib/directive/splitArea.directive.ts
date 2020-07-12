@@ -13,7 +13,7 @@ import { getInputPositiveNumber, getInputBoolean } from '../utils';
 
 @Directive({
   selector: 'ngx-split-area, [ngx-split-area]',
-  exportAs: 'asSplitArea',
+  exportAs: 'ngxSplitArea',
 })
 export class SplitAreaDirective implements OnInit, OnDestroy {
   private _order: number | null = null;
