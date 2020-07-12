@@ -160,33 +160,33 @@ export class DocumentationComponent {
 
   readonly cssClasses = {
     split: [
-      { name: 'ngx-init', details: 'Added after component initialization.' },
+      { name: 'ui-init', details: 'Added after component initialization.' },
       {
-        name: 'ngx-horizontal / ngx-vertical',
+        name: 'ui-horizontal / ui-vertical',
         details: 'Depends on <code>&lt;ui-split [direction]="x"&gt;</code>.',
       },
       {
-        name: 'ngx-disabled',
+        name: 'ui-disabled',
         details: 'Added when <code>&lt;ui-split [disabled]="true"&gt;</code>.',
       },
       {
-        name: 'ngx-transition',
+        name: 'ui-transition',
         details:
           'Added when <code>&lt;ui-split [useTransition]="true"&gt;</code>.',
       },
-      { name: 'ngx-dragging', details: 'Added while a gutter is dragged.' },
+      { name: 'ui-dragging', details: 'Added while a gutter is dragged.' },
     ],
     area: [
       { name: 'ui-split-area', details: 'Added on all areas.' },
       {
-        name: 'ngx-hidden',
+        name: 'ui-hidden',
         details:
           'Added when <code>&lt;ui-split-area [visible]="false"&gt;</code>.',
       },
     ],
     gutter: [
       { name: 'ui-split-gutter', details: 'Added on all gutters.' },
-      { name: 'ngx-dragged', details: 'Added on gutter while dragged.' },
+      { name: 'ui-dragged', details: 'Added on gutter while dragged.' },
     ],
   };
 }
