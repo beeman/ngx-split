@@ -35,6 +35,7 @@ import {
   getElementPixelSize,
   getGutterSideAbsorptionCapacity,
   updateAreaSize,
+  getAreaSize,
 } from '../utils';
 
 /**
@@ -95,8 +96,6 @@ import {
     </ng-template>`,
 })
 export class SplitComponent implements AfterViewInit, OnDestroy {
-  private _direction: 'horizontal' | 'vertical' = 'horizontal';
-
   @Input() set direction(v: 'horizontal' | 'vertical') {
     this._direction = v === 'vertical' ? 'vertical' : 'horizontal';
 
@@ -112,10 +111,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   get direction(): 'horizontal' | 'vertical' {
     return this._direction;
   }
-
-  ////
-
-  private _unit: 'percent' | 'pixel' = 'percent';
 
   @Input() set unit(v: 'percent' | 'pixel') {
     this._unit = v === 'pixel' ? 'pixel' : 'percent';
@@ -133,10 +128,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._unit;
   }
 
-  ////
-
-  private _gutterSize: number = 11;
-
   @Input() set gutterSize(v: number | null) {
     this._gutterSize = getInputPositiveNumber(v, 11);
 
@@ -147,10 +138,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._gutterSize;
   }
 
-  ////
-
-  private _gutterStep: number = 1;
-
   @Input() set gutterStep(v: number) {
     this._gutterStep = getInputPositiveNumber(v, 1);
   }
@@ -159,10 +146,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._gutterStep;
   }
 
-  ////
-
-  private _restrictMove: boolean = false;
-
   @Input() set restrictMove(v: boolean) {
     this._restrictMove = getInputBoolean(v);
   }
@@ -170,10 +153,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   get restrictMove(): boolean {
     return this._restrictMove;
   }
-
-  ////
-
-  private _useTransition: boolean = false;
 
   @Input() set useTransition(v: boolean) {
     this._useTransition = getInputBoolean(v);
@@ -187,10 +166,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._useTransition;
   }
 
-  ////
-
-  private _disabled: boolean = false;
-
   @Input() set disabled(v: boolean) {
     this._disabled = getInputBoolean(v);
 
@@ -203,10 +178,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._disabled;
   }
 
-  ////
-
-  private _dir: 'ltr' | 'rtl' = 'ltr';
-
   @Input() set dir(v: 'ltr' | 'rtl') {
     this._dir = v === 'rtl' ? 'rtl' : 'ltr';
 
@@ -217,10 +188,6 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._dir;
   }
 
-  ////
-
-  private _gutterDblClickDuration: number = 0;
-
   @Input() set gutterDblClickDuration(v: number) {
     this._gutterDblClickDuration = getInputPositiveNumber(v, 0);
   }
@@ -228,38 +195,11 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   get gutterDblClickDuration(): number {
     return this._gutterDblClickDuration;
   }
-
-  ////
-
-  @Output() dragStart = new EventEmitter<IOutputData>(false);
-  @Output() dragEnd = new EventEmitter<IOutputData>(false);
-  @Output() gutterClick = new EventEmitter<IOutputData>(false);
-  @Output() gutterDblClick = new EventEmitter<IOutputData>(false);
-
-  private transitionEndSubscriber: Subscriber<IOutputAreaSizes>;
   @Output() get transitionEnd(): Observable<IOutputAreaSizes> {
     return new Observable(
       (subscriber) => (this.transitionEndSubscriber = subscriber)
     ).pipe(debounceTime<IOutputAreaSizes>(20));
   }
-
-  private dragProgressSubject: Subject<IOutputData> = new Subject();
-  dragProgress$: Observable<
-    IOutputData
-  > = this.dragProgressSubject.asObservable();
-
-  ////
-
-  private isDragging: boolean = false;
-  private dragListeners: Array<Function> = [];
-  private snapshot: ISplitSnapshot | null = null;
-  private startPoint: IPoint | null = null;
-  private endPoint: IPoint | null = null;
-
-  public readonly displayedAreas: Array<IArea> = [];
-  private readonly hidedAreas: Array<IArea> = [];
-
-  @ViewChildren('gutterEls') private gutterEls: QueryList<ElementRef>;
 
   constructor(
     private ngZone: NgZone,
@@ -270,6 +210,40 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     // To force adding default class, could be override by user @Input() or not
     this.direction = this._direction;
   }
+  private _direction: 'horizontal' | 'vertical' = 'horizontal';
+  private _unit: 'percent' | 'pixel' = 'percent';
+  private _gutterSize = 11;
+  private _gutterStep = 1;
+  private _restrictMove = false;
+  private _useTransition = false;
+  private _disabled = false;
+  private _dir: 'ltr' | 'rtl' = 'ltr';
+  private _gutterDblClickDuration = 0;
+
+  @Output() dragStart = new EventEmitter<IOutputData>(false);
+  @Output() dragEnd = new EventEmitter<IOutputData>(false);
+  @Output() gutterClick = new EventEmitter<IOutputData>(false);
+  @Output() gutterDblClick = new EventEmitter<IOutputData>(false);
+
+  private transitionEndSubscriber: Subscriber<IOutputAreaSizes>;
+
+  private dragProgressSubject: Subject<IOutputData> = new Subject();
+  dragProgress$: Observable<
+    IOutputData
+  > = this.dragProgressSubject.asObservable();
+
+  private isDragging = false;
+  private dragListeners: Array<Function> = [];
+  private snapshot: ISplitSnapshot | null = null;
+  private startPoint: IPoint | null = null;
+  private endPoint: IPoint | null = null;
+
+  public readonly displayedAreas: Array<IArea> = [];
+  private readonly hidedAreas: Array<IArea> = [];
+
+  @ViewChildren('gutterEls') private gutterEls: QueryList<ElementRef>;
+
+  _clickTimeout: number | null = null;
 
   public ngAfterViewInit() {
     this.ngZone.runOutsideAngular(() => {
@@ -503,8 +477,8 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
             `calc( ${area.size}% - ${
               (<number>area.size / 100) * sumGutterSize
             }px )`,
-            area.minSize !== null && area.minSize === area.size ? true : false,
-            area.maxSize !== null && area.maxSize === area.size ? true : false
+            area.minSize !== null && area.minSize === area.size,
+            area.maxSize !== null && area.maxSize === area.size
           );
         });
       }
@@ -533,18 +507,14 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
               0,
               0,
               `${area.size}px`,
-              area.minSize !== null && area.minSize === area.size
-                ? true
-                : false,
-              area.maxSize !== null && area.maxSize === area.size ? true : false
+              area.minSize !== null && area.minSize === area.size,
+              area.maxSize !== null && area.maxSize === area.size
             );
           }
         }
       });
     }
   }
-
-  _clickTimeout: number | null = null;
 
   public clickGutter(event: MouseEvent | TouchEvent, gutterNum: number): void {
     const tempPoint = getPointFromEvent(event);
@@ -598,13 +568,14 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     };
 
     this.displayedAreas.forEach((area) => {
+      const size = getAreaSize(area.size);
       const areaSnapshot: IAreaSnapshot = {
         area,
         sizePixelAtStart: getElementPixelSize(
           area.component.elRef,
           this.direction
         ),
-        sizePercentAtStart: this.unit === 'percent' ? area.size : -1, // If pixel mode, anyway, will not be used.
+        sizePercentAtStart: this.unit === 'percent' ? size : -1, // If pixel mode, anyway, will not be used.
       };
 
       if (area.order < gutterOrder) {

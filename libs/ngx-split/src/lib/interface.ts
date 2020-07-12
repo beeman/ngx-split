@@ -5,12 +5,14 @@ export interface IPoint {
   y: number;
 }
 
+export type IAreaSize = number | '*';
+
 export interface IArea {
   component: SplitAreaDirective;
   order: number;
-  size: number | null;
-  minSize: number | null;
-  maxSize: number | null;
+  size: IAreaSize;
+  minSize: IAreaSize;
+  maxSize: IAreaSize;
 }
 
 // CREATED ON DRAG START
@@ -51,4 +53,4 @@ export interface IOutputData {
   sizes: IOutputAreaSizes;
 }
 
-export interface IOutputAreaSizes extends Array<number | '*'> {}
+export interface IOutputAreaSizes extends Array<IAreaSize> {}

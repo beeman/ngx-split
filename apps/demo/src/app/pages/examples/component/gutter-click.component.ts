@@ -1,16 +1,16 @@
 import {
-  Component,
-  ViewChild,
-  ElementRef,
-  ChangeDetectionStrategy,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
   OnDestroy,
+  ViewChild,
 } from '@angular/core';
+import { getAreaSize, IOutputData, SplitComponent } from 'ngx-split';
 import { Subscription } from 'rxjs';
-import { SplitComponent } from 'ngx-split';
+import { formatDate } from '../format-date';
 
 import { AComponent } from './AComponent';
-import { formatDate } from '../format-date';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -136,7 +136,7 @@ export class GutterClickComponent extends AComponent
   useTransition = true;
   dblClickTime = 0;
   logMessages: Array<{ type: string; text: string }> = [];
-  areas = [
+  areas: { order: number; content: string; size: number }[] = [
     {
       size: 25,
       order: 1,
@@ -169,7 +169,7 @@ export class GutterClickComponent extends AComponent
     });
   }
 
-  log(type: string, e: { gutterNum: number; sizes: Array<number> }) {
+  log(type: string, e: IOutputData) {
     this.logMessages.push({
       type,
       text: `${formatDate(new Date())} > ${type} event > ${JSON.stringify(e)}`,
@@ -186,13 +186,13 @@ export class GutterClickComponent extends AComponent
     if (type === 'gutterClick') {
       this.gutterClick(e);
     } else if (type === 'dragEnd') {
-      this.areas[0].size = e.sizes[0];
-      this.areas[1].size = e.sizes[1];
-      this.areas[2].size = e.sizes[2];
+      this.areas[0].size = getAreaSize(e.sizes[0]);
+      this.areas[1].size = getAreaSize(e.sizes[1]);
+      this.areas[2].size = getAreaSize(e.sizes[2]);
     }
   }
 
-  gutterClick(e: { gutterNum: number; sizes: Array<number> }) {
+  gutterClick(e: IOutputData) {
     if (e.gutterNum === 1) {
       if (this.areas[0].size > 0) {
         this.areas[1].size += this.areas[0].size;
