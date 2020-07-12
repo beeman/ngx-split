@@ -13,7 +13,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
   },
   styles: [
     `
-      .ngx-split-area {
+      .ui-split-area {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -64,7 +64,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="background-color: #e5e0e0;">
-        <ngx-split
+        <ui-split
           [direction]="direction"
           [restrictMove]="d.restrictMove"
           [gutterSize]="d.gutterSize"
@@ -81,16 +81,16 @@ import { ChangeDetectionComponent } from './change-detection.component';
             [ngForTrackBy]="trackByFct"
             let-index="index"
           >
-            <ngx-split-area
+            <ui-split-area
               *ngIf="area.present"
               [visible]="area.visible"
               [order]="index"
               [size]="area.size"
               [style.background-color]="area.color"
-              >{{ area.id }}</ngx-split-area
+              >{{ area.id }}</ui-split-area
             >
           </ng-template>
-        </ngx-split>
+        </ui-split>
       </div>
       <div class="opts-prop">
         <div>

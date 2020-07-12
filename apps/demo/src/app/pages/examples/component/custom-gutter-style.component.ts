@@ -16,8 +16,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example ex-a">
-        <ngx-split [direction]="direction" [gutterSize]="35">
-          <ngx-split-area [size]="30">
+        <ui-split [direction]="direction" [gutterSize]="35">
+          <ui-split-area [size]="30">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -25,8 +25,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area [size]="70">
+          </ui-split-area>
+          <ui-split-area [size]="70">
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -41,34 +41,34 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <div class="split-example ex-b">
-        <ngx-split
+        <ui-split
           [direction]="direction"
           [restrictMove]="true"
           [gutterSize]="1"
         >
-          <ngx-split-area [size]="30"
+          <ui-split-area [size]="30"
             ><p>
               A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
               A A A A A A A A A A A A A A
-            </p></ngx-split-area
+            </p></ui-split-area
           >
-          <ngx-split-area [size]="50"
+          <ui-split-area [size]="50"
             ><p>
               B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B B
               B B B B B B B B B B B B B B
-            </p></ngx-split-area
+            </p></ui-split-area
           >
-          <ngx-split-area [size]="20"
+          <ui-split-area [size]="20"
             ><p>
               C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C C
               C C C C C C C C C C C C C C
-            </p></ngx-split-area
+            </p></ui-split-area
           >
-        </ngx-split>
+        </ui-split>
       </div>
       <br />
       <div class="btns">

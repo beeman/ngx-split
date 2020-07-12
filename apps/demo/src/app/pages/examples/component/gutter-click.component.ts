@@ -20,13 +20,13 @@ import { ChangeDetectionComponent } from './change-detection.component';
   },
   styles: [
     `
-      ngx-split.ngx-transition.ngx-init:not(.ngx-dragging)
+      ui-split.ngx-transition.ngx-init:not(.ngx-dragging)
         ::ng-deep
-        > .ngx-split-gutter,
-      ngx-split.ngx-transition.ngx-init:not(.ngx-dragging) > .ngx-split-area {
+        > .ui-split-gutter,
+      ui-split.ngx-transition.ngx-init:not(.ngx-dragging) > .ui-split-area {
         transition: flex-basis 1.5s !important;
       }
-      ngx-split.ngx-disabled ::ng-deep > .ngx-split-gutter {
+      ui-split.ngx-disabled ::ng-deep > .ui-split-gutter {
         cursor: pointer !important;
       }
 
@@ -62,7 +62,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
-        <ngx-split
+        <ui-split
           #mySplit
           [disabled]="isDisabled"
           [gutterSize]="10"
@@ -75,14 +75,14 @@ import { ChangeDetectionComponent } from './change-detection.component';
           (gutterDblClick)="log('gutterDblClick', $event)"
           (transitionEnd)="log('transitionEnd')"
         >
-          <ngx-split-area
+          <ui-split-area
             *ngFor="let a of areas"
             [size]="a.size"
             [order]="a.order"
           >
             <p>{{ a.content }}</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <div class="btns">
@@ -125,7 +125,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
         </div>
       </div>
       <div class="logs">
-        <p>All <code>ngx-split</code> events emitted:</p>
+        <p>All <code>ui-split</code> events emitted:</p>
         <ul #logs>
           <li *ngFor="let l of logMessages" [ngClass]="l.type">{{ l.text }}</li>
         </ul>

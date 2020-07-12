@@ -87,7 +87,7 @@ const defaultConfig: IConfig = {
     `,
   ],
   template: `
-    <ngx-split
+    <ui-split
       *ngIf="config"
       direction="horizontal"
       [disabled]="config.disabled"
@@ -99,12 +99,12 @@ const defaultConfig: IConfig = {
         [ngForOf]="config.columns"
         let-colindex="index"
       >
-        <ngx-split-area
+        <ui-split-area
           *ngIf="column.visible"
           [order]="colindex"
           [size]="column.size"
         >
-          <ngx-split
+          <ui-split
             direction="vertical"
             [disabled]="config.disabled"
             (dragEnd)="onDragEnd(colindex, $event)"
@@ -115,7 +115,7 @@ const defaultConfig: IConfig = {
               [ngForOf]="column.rows"
               let-rowindex="index"
             >
-              <ngx-split-area
+              <ui-split-area
                 *ngIf="row.visible"
                 [order]="rowindex"
                 [size]="row.size"
@@ -161,17 +161,17 @@ const defaultConfig: IConfig = {
                     <p>{{ row.type }}</p>
                   </div>
                 </div>
-              </ngx-split-area>
+              </ui-split-area>
             </ng-template>
-          </ngx-split>
-        </ngx-split-area>
+          </ui-split>
+        </ui-split-area>
       </ng-template>
-    </ngx-split>
+    </ui-split>
   `,
 })
 export class WorkspaceLocalstorageComponent extends ChangeDetectionComponent
   implements OnInit {
-  localStorageName = 'ngx-split-ws';
+  localStorageName = 'ui-split-ws';
   config: IConfig = null;
 
   example$: Observable<Data>;

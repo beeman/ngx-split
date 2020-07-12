@@ -34,8 +34,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
-        <ngx-split>
-          <ngx-split-area [size]="75">
+        <ui-split>
+          <ui-split-area [size]="75">
             <p>
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
@@ -50,8 +50,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-          <ngx-split-area [size]="3">
+          </ui-split-area>
+          <ui-split-area [size]="3">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -59,8 +59,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area [visible]="false" [size]="18">
+          </ui-split-area>
+          <ui-split-area [visible]="false" [size]="18">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -68,8 +68,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area [size]="4">
+          </ui-split-area>
+          <ui-split-area [size]="4">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tiam, quis nostrud exercitation ullamco laboris nisi ut
@@ -77,8 +77,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <div class="btns">

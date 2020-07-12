@@ -163,29 +163,29 @@ export class DocumentationComponent {
       { name: 'ngx-init', details: 'Added after component initialization.' },
       {
         name: 'ngx-horizontal / ngx-vertical',
-        details: 'Depends on <code>&lt;ngx-split [direction]="x"&gt;</code>.',
+        details: 'Depends on <code>&lt;ui-split [direction]="x"&gt;</code>.',
       },
       {
         name: 'ngx-disabled',
-        details: 'Added when <code>&lt;ngx-split [disabled]="true"&gt;</code>.',
+        details: 'Added when <code>&lt;ui-split [disabled]="true"&gt;</code>.',
       },
       {
         name: 'ngx-transition',
         details:
-          'Added when <code>&lt;ngx-split [useTransition]="true"&gt;</code>.',
+          'Added when <code>&lt;ui-split [useTransition]="true"&gt;</code>.',
       },
       { name: 'ngx-dragging', details: 'Added while a gutter is dragged.' },
     ],
     area: [
-      { name: 'ngx-split-area', details: 'Added on all areas.' },
+      { name: 'ui-split-area', details: 'Added on all areas.' },
       {
         name: 'ngx-hidden',
         details:
-          'Added when <code>&lt;ngx-split-area [visible]="false"&gt;</code>.',
+          'Added when <code>&lt;ui-split-area [visible]="false"&gt;</code>.',
       },
     ],
     gutter: [
-      { name: 'ngx-split-gutter', details: 'Added on all gutters.' },
+      { name: 'ui-split-gutter', details: 'Added on all gutters.' },
       { name: 'ngx-dragged', details: 'Added on gutter while dragged.' },
     ],
   };

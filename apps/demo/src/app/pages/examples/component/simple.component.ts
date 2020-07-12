@@ -26,13 +26,13 @@ import { ChangeDetectionComponent } from './change-detection.component';
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <h5>Percent mode:</h5>
       <div class="split-example ex-percent">
-        <ngx-split
+        <ui-split
           unit="percent"
           [direction]="direction"
           (dragEnd)="dragEnd('percent', $event)"
-          #split="ngxSplit"
+          #split="uiSplit"
         >
-          <ngx-split-area [size]="30" #area1="ngxSplitArea">
+          <ui-split-area [size]="30" #area1="uiSplitArea">
             <h5>Initial size: <b>30%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area1 }}%</b>
@@ -44,8 +44,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area [size]="70" #area2="ngxSplitArea">
+          </ui-split-area>
+          <ui-split-area [size]="70" #area2="uiSplitArea">
             <h5>Initial size: <b>70%</b></h5>
             <h5>
               Current size: <b>{{ sizes.percent.area2 }}%</b>
@@ -64,17 +64,17 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <h5>Pixel mode:</h5>
       <div class="split-example ex-pixel">
-        <ngx-split
+        <ui-split
           unit="pixel"
           [direction]="direction"
           (dragEnd)="dragEnd('pixel', $event)"
         >
-          <ngx-split-area [size]="120">
+          <ui-split-area [size]="120">
             <h5>Initial size: <b>120px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area1 }}px</b>
@@ -84,8 +84,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               irure dolor in reprehenderit in voluptate velit esse cillum dolore
               eu fugiat nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area size="*">
+          </ui-split-area>
+          <ui-split-area size="*">
             <h5>Initial size: <b>*</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area2 }}</b>
@@ -104,8 +104,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-          <ngx-split-area [size]="160">
+          </ui-split-area>
+          <ui-split-area [size]="160">
             <h5>Initial size: <b>160px</b></h5>
             <h5>
               Current size: <b>{{ sizes.pixel.area3 }}px</b>
@@ -116,8 +116,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <div class="btns">

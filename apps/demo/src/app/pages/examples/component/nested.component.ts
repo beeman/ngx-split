@@ -14,14 +14,14 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="height: 400px;">
-        <ngx-split
+        <ui-split
           direction="horizontal"
           [restrictMove]="true"
           [useTransition]="true"
         >
-          <ngx-split-area [size]="40">
-            <ngx-split direction="vertical" [restrictMove]="true">
-              <ngx-split-area>
+          <ui-split-area [size]="40">
+            <ui-split direction="vertical" [restrictMove]="true">
+              <ui-split-area>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -29,8 +29,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </ngx-split-area>
-              <ngx-split-area>
+              </ui-split-area>
+              <ui-split-area>
                 <p>
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
@@ -47,8 +47,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
                   molestiae consequatur, vel illum qui dolorem eum fugiat quo
                   voluptas nulla pariatur?
                 </p>
-              </ngx-split-area>
-              <ngx-split-area>
+              </ui-split-area>
+              <ui-split-area>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -56,12 +56,12 @@ import { ChangeDetectionComponent } from './change-detection.component';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </ngx-split-area>
-            </ngx-split>
-          </ngx-split-area>
-          <ngx-split-area [size]="60">
-            <ngx-split direction="vertical" [restrictMove]="true">
-              <ngx-split-area [size]="25">
+              </ui-split-area>
+            </ui-split>
+          </ui-split-area>
+          <ui-split-area [size]="60">
+            <ui-split direction="vertical" [restrictMove]="true">
+              <ui-split-area [size]="25">
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tiam, quis nostrud exercitation ullamco laboris
@@ -69,8 +69,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
                   in reprehenderit in voluptate velit esse cillum dolore eu
                   fugiat nulla pariatur.
                 </p>
-              </ngx-split-area>
-              <ngx-split-area [size]="75">
+              </ui-split-area>
+              <ui-split-area [size]="75">
                 <p>
                   Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                   accusantium doloremque laudantium, totam rem aperiam, eaque
@@ -87,10 +87,10 @@ import { ChangeDetectionComponent } from './change-detection.component';
                   molestiae consequatur, vel illum qui dolorem eum fugiat quo
                   voluptas nulla pariatur?
                 </p>
-              </ngx-split-area>
-            </ngx-split>
-          </ngx-split-area>
-        </ngx-split>
+              </ui-split-area>
+            </ui-split>
+          </ui-split-area>
+        </ui-split>
       </div>
     </div>
   `,

@@ -24,29 +24,29 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example ex1" style="height: 150px;">
-        <ngx-split [gutterSize]="15" (dragEnd)="log('dragEnd', $event)">
-          <ngx-split-area
+        <ui-split [gutterSize]="15" (dragEnd)="log('dragEnd', $event)">
+          <ui-split-area
             *ngIf="action.isPresentA"
             [visible]="action.isVisibleA"
             [order]="0"
           >
             <p>A</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             *ngIf="action.isPresentB"
             [visible]="action.isVisibleB"
             [order]="1"
           >
             <p>B</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             *ngIf="action.isPresentC"
             [visible]="action.isVisibleC"
             [order]="2"
           >
             <p>C</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <p>Toggle <code>[visible]="boolean"</code> properties:</p>
       <div class="btns">

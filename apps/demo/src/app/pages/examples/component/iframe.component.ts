@@ -16,7 +16,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
         height: 100%;
         width: 100%;
       }
-      .ngx-split-area > div {
+      .ui-split-area > div {
         position: relative;
         height: 100%;
         overflow: hidden;
@@ -37,30 +37,30 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="height: 400px;">
-        <ngx-split
+        <ui-split
           direction="horizontal"
           (dragStart)="showIframeHider = true"
           (dragEnd)="showIframeHider = false"
         >
-          <ngx-split-area [size]="40">
+          <ui-split-area [size]="40">
             <div>
-              <iframe src="https://beeman.github.io/ngx-split"></iframe>
+              <iframe src="https://beeman.github.io/ui-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
               ></div>
             </div>
-          </ngx-split-area>
-          <ngx-split-area [size]="60">
+          </ui-split-area>
+          <ui-split-area [size]="60">
             <div>
-              <iframe src="https://beeman.github.io/ngx-split"></iframe>
+              <iframe src="https://beeman.github.io/ui-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
               ></div>
             </div>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
     </div>
   `,

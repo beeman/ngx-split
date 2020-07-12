@@ -58,15 +58,15 @@ import { ChangeDetectionComponent } from './change-detection.component';
         background-color: var(--light);
       }
 
-      .ngx-split-area {
+      .ui-split-area {
         background: var(--gray);
       }
 
-      .ngx-split-area.ngx-min {
+      .ui-split-area.ngx-min {
         background: var(--green);
       }
 
-      .ngx-split-area.ngx-max {
+      .ui-split-area.ngx-max {
         background: var(--red);
       }
 
@@ -78,11 +78,11 @@ import { ChangeDetectionComponent } from './change-detection.component';
         .ex2
         ::ng-deep
         .ngx-transition.ngx-init:not(.ngx-dragging)
-        > .ngx-split-area,
+        > .ui-split-area,
       :host
         ::ng-deep
         .ngx-transition.ngx-init:not(.ngx-dragging)
-        > .ngx-split-gutter {
+        > .ui-split-gutter {
         transition: flex-basis 1s !important;
       }
     `,
@@ -92,14 +92,14 @@ import { ChangeDetectionComponent } from './change-detection.component';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
-        <ngx-split
+        <ui-split
           direction="horizontal"
           [disabled]="true"
           [useTransition]="useTransition"
           (dragEnd)="onDragEnd($event)"
           (transitionEnd)="log($event)"
         >
-          <ngx-split-area
+          <ui-split-area
             [visible]="actionVisible.a1v"
             [size]="actionSize.a1s"
             [order]="1"
@@ -111,8 +111,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               reprehenderit in voluptate velit esse cillum dolore eu fugiat
               nulla pariatur.
             </p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [visible]="actionVisible.a2v"
             [size]="actionSize.a2s"
             [order]="2"
@@ -131,8 +131,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [visible]="actionVisible.a3v"
             [size]="actionSize.a3s"
             [order]="3"
@@ -151,8 +151,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               qui in ea voluptate velit esse quam nihil molestiae consequatur,
               vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
             </p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <div class="btns">
@@ -224,8 +224,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
       <hr />
       <br />
       <div class="split-example ex2" style="height: 150px;">
-        <ngx-split [useTransition]="true" unit="pixel">
-          <ngx-split-area
+        <ui-split [useTransition]="true" unit="pixel">
+          <ui-split-area
             [size]="200"
             [minSize]="200"
             [order]="1"
@@ -235,8 +235,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             size="*"
             [order]="2"
             [visible]="only === 2 || only === 0"
@@ -245,8 +245,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: *</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [size]="200"
             [minSize]="200"
             [order]="3"
@@ -256,12 +256,12 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <ngx-split [useTransition]="true" unit="percent">
-          <ngx-split-area
+        <ui-split [useTransition]="true" unit="percent">
+          <ui-split-area
             [size]="30"
             [minSize]="30"
             [order]="1"
@@ -271,8 +271,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [size]="40"
             [order]="2"
             [visible]="only === 2 || only === 0"
@@ -281,8 +281,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: 40%</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [size]="30"
             [minSize]="30"
             [order]="3"
@@ -292,8 +292,8 @@ import { ChangeDetectionComponent } from './change-detection.component';
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <hr />
@@ -321,50 +321,50 @@ import { ChangeDetectionComponent } from './change-detection.component';
         </div>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <ngx-split [useTransition]="true" unit="pixel">
-          <ngx-split-area
+        <ui-split [useTransition]="true" unit="pixel">
+          <ui-split-area
             [size]="200"
             [minSize]="200"
             [order]="1"
             [visible]="keepA"
           >
             <p>A<br />size: 200px<br />minSize: 200px</p>
-          </ngx-split-area>
-          <ngx-split-area size="*" [order]="2" [visible]="keepB">
+          </ui-split-area>
+          <ui-split-area size="*" [order]="2" [visible]="keepB">
             <p>B<br />size: *</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [size]="200"
             [minSize]="200"
             [order]="3"
             [visible]="keepC"
           >
             <p>C<br />size: 200px<br />minSize: 200px</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <div class="split-example ex2" style="height: 150px;">
-        <ngx-split [useTransition]="true" unit="percent">
-          <ngx-split-area
+        <ui-split [useTransition]="true" unit="percent">
+          <ui-split-area
             [size]="30"
             [minSize]="30"
             [order]="1"
             [visible]="keepA"
           >
             <p>A<br />size: 30%<br />minSize: 30%</p>
-          </ngx-split-area>
-          <ngx-split-area [size]="40" [order]="2" [visible]="keepB">
+          </ui-split-area>
+          <ui-split-area [size]="40" [order]="2" [visible]="keepB">
             <p>B<br />size: 40%</p>
-          </ngx-split-area>
-          <ngx-split-area
+          </ui-split-area>
+          <ui-split-area
             [size]="30"
             [minSize]="30"
             [order]="3"
             [visible]="keepC"
           >
             <p>C<br />size: 30%<br />minSize: 30%</p>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
     </div>
   `,

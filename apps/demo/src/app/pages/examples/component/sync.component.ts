@@ -23,32 +23,32 @@ import { formatDate } from '../format-date';
     <div class="container">
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
-        <ngx-split direction="vertical">
-          <div ngx-split-area [size]="20">
-            <ngx-split direction="horizontal" #mySplitA>
-              <div ngx-split-area [size]="sizes[0]">A 1</div>
-              <ngx-split-area [size]="sizes[1]">A 2</ngx-split-area>
-            </ngx-split>
+        <ui-split direction="vertical">
+          <div ui-split-area [size]="20">
+            <ui-split direction="horizontal" #mySplitA>
+              <div ui-split-area [size]="sizes[0]">A 1</div>
+              <ui-split-area [size]="sizes[1]">A 2</ui-split-area>
+            </ui-split>
           </div>
-          <div ngx-split-area [size]="20">
-            <ngx-split direction="horizontal" #mySplitB>
-              <div ngx-split-area [size]="sizes[0]">B 1</div>
-              <ngx-split-area [size]="sizes[1]">B 2</ngx-split-area>
-            </ngx-split>
+          <div ui-split-area [size]="20">
+            <ui-split direction="horizontal" #mySplitB>
+              <div ui-split-area [size]="sizes[0]">B 1</div>
+              <ui-split-area [size]="sizes[1]">B 2</ui-split-area>
+            </ui-split>
           </div>
-          <ngx-split-area [size]="60">
-            <ngx-split direction="horizontal" #mySplitC>
-              <ngx-split-area [size]="sizes[0]">C 1</ngx-split-area>
-              <div ngx-split-area [size]="sizes[1]">
+          <ui-split-area [size]="60">
+            <ui-split direction="horizontal" #mySplitC>
+              <ui-split-area [size]="sizes[0]">C 1</ui-split-area>
+              <div ui-split-area [size]="sizes[1]">
                 C 2<br />
                 Open devTools to view console.log() statements.<br />
                 <button class="btn btn-primary" (click)="test()">
                   Trigger change detection
                 </button>
               </div>
-            </ngx-split>
-          </ngx-split-area>
-        </ngx-split>
+            </ui-split>
+          </ui-split-area>
+        </ui-split>
       </div>
     </div>
   `,

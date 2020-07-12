@@ -42,7 +42,7 @@ import {
 } from '../utils';
 
 /**
- * ngx-split
+ * ui-split
  *
  *
  *  PERCENT MODE ([unit]="'percent'")
@@ -72,8 +72,8 @@ import {
  */
 
 @Component({
-  selector: 'ngx-split',
-  exportAs: 'ngxSplit',
+  selector: 'ui-split',
+  exportAs: 'uiSplit',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: [`./split.component.scss`],
   template: ` <ng-content></ng-content>
@@ -86,7 +86,7 @@ import {
       <div
         *ngIf="last === false"
         #gutterEls
-        class="ngx-split-gutter"
+        class="ui-split-gutter"
         [style.flex-basis.px]="gutterSize"
         [style.order]="index * 2 + 1"
         (mousedown)="startDragging($event, index * 2 + 1, index + 1)"
@@ -94,7 +94,7 @@ import {
         (mouseup)="clickGutter($event, index + 1)"
         (touchend)="clickGutter($event, index + 1)"
       >
-        <div class="ngx-split-gutter-icon"></div>
+        <div class="ui-split-gutter-icon"></div>
       </div>
     </ng-template>`,
 })

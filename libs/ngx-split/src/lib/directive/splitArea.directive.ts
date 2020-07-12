@@ -13,8 +13,8 @@ import { IAreaSize } from '../interface';
 import { getInputPositiveNumber, getInputBoolean } from '../utils';
 
 @Directive({
-  selector: 'ngx-split-area, [ngx-split-area]',
-  exportAs: 'ngxSplitArea',
+  selector: 'ui-split-area, [ui-split-area]',
+  exportAs: 'uiSplitArea',
 })
 export class SplitAreaDirective implements OnInit, OnDestroy {
   private _order: number | null = null;
@@ -104,7 +104,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private split: SplitComponent
   ) {
-    this.renderer.addClass(this.elRef.nativeElement, 'ngx-split-area');
+    this.renderer.addClass(this.elRef.nativeElement, 'ui-split-area');
   }
 
   public ngOnInit(): void {

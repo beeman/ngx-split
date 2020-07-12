@@ -42,14 +42,14 @@ import { ChangeDetectionComponent } from './change-detection.component';
         text-align: center;
       }
 
-      ngx-split-area {
+      ui-split-area {
         background: var(--cyan);
         transition: background 0.2s;
         position: relative;
         overflow: hidden !important;
       }
 
-      ngx-split-area > p {
+      ui-split-area > p {
         position: absolute;
         font-size: 12px;
         font-weight: bold;
@@ -57,22 +57,22 @@ import { ChangeDetectionComponent } from './change-detection.component';
         line-height: 12px;
       }
 
-      ngx-split-area.ngx-min {
+      ui-split-area.ngx-min {
         background: var(--green);
       }
-      ngx-split-area.ngx-min .txt-min {
+      ui-split-area.ngx-min .txt-min {
         opacity: 1;
       }
-      ngx-split-area.ngx-max {
+      ui-split-area.ngx-max {
         background: var(--red);
       }
-      ngx-split-area.ngx-max .txt-max {
+      ui-split-area.ngx-max .txt-max {
         opacity: 1;
       }
-      ngx-split-area.ngx-min.ngx-max {
+      ui-split-area.ngx-min.ngx-max {
         background: var(--pink);
       }
-      ngx-split-area.ngx-min.ngx-max .txt-minmax {
+      ui-split-area.ngx-min.ngx-max .txt-minmax {
         opacity: 1;
       }
     `,
@@ -83,61 +83,61 @@ import { ChangeDetectionComponent } from './change-detection.component';
       <ui-example-title [example]="example$ | async"></ui-example-title>
       <h5>Percent mode:</h5>
       <div class="split-example ex-percent">
-        <ngx-split
+        <ui-split
           unit="percent"
           [restrictMove]="restrictMove"
           [gutterSize]="30"
           (dragEnd)="log($event)"
         >
-          <ngx-split-area [size]="30" [minSize]="20" [maxSize]="30">
+          <ui-split-area [size]="30" [minSize]="20" [maxSize]="30">
             <p>size="30"<br />minSize="20"<br />maxSize="30"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-          <ngx-split-area [size]="40" [minSize]="30" [maxSize]="50">
+          </ui-split-area>
+          <ui-split-area [size]="40" [minSize]="30" [maxSize]="50">
             <p>size="40"<br />minSize="30"<br />maxSize="50"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-          <ngx-split-area [size]="30" [minSize]="20" [maxSize]="50">
+          </ui-split-area>
+          <ui-split-area [size]="30" [minSize]="20" [maxSize]="50">
             <p>size="30"<br />minSize="20"<br />maxSize="50"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <h5>Pixel mode:</h5>
       <div class="split-example ex-pixel">
-        <ngx-split
+        <ui-split
           unit="pixel"
           [restrictMove]="restrictMove"
           [gutterSize]="30"
           (dragEnd)="log($event)"
         >
-          <ngx-split-area [size]="200" [minSize]="100" [maxSize]="200">
+          <ui-split-area [size]="200" [minSize]="100" [maxSize]="200">
             <p>size="200"<br />minSize="100"<br />maxSize="200"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-          <ngx-split-area size="*">
+          </ui-split-area>
+          <ui-split-area size="*">
             <p>size="*"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-          <ngx-split-area [size]="150" [lockSize]="true">
+          </ui-split-area>
+          <ui-split-area [size]="150" [lockSize]="true">
             <p>
               size="150"<br />lockSize="true"<br /><br />Same as<br />minSize="150"<br />maxSize="150"
             </p>
             <div class="txt-minmax">
               <p>MIN<br />&<br />MAX</p>
             </div>
-          </ngx-split-area>
-          <ngx-split-area [size]="250" [minSize]="250" [maxSize]="400">
+          </ui-split-area>
+          <ui-split-area [size]="250" [minSize]="250" [maxSize]="400">
             <p>size="250"<br />minSize="250"<br />maxSize="400"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
-          </ngx-split-area>
-        </ngx-split>
+          </ui-split-area>
+        </ui-split>
       </div>
       <br />
       <div class="btns">
