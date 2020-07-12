@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import * as marked from 'marked';
 import { merge, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -8,24 +7,21 @@ import { catchError, map } from 'rxjs/operators';
 export class ChangelogService {
   private readonly url =
     'https://raw.githubusercontent.com/beeman/ngx-split/main/CHANGELOG.md';
-  // else 'https://rawgit.com/beeman/ngx-split/main/CHANGELOG.md';
-  private cachedHtml = '';
+  private cachedMd = '';
 
-  constructor(private http: HttpClient) {
-    marked.setOptions({});
-  }
+  constructor(private http: HttpClient) {}
 
-  getHtml(): Observable<string> {
-    if (this.cachedHtml !== '') {
-      return of(this.cachedHtml);
+  getMd(): Observable<string> {
+    if (this.cachedMd !== '') {
+      return of(this.cachedMd);
     }
 
     return merge(
       of('Loading..'),
       this.http.get(this.url, { responseType: 'text' }).pipe(
         map((md) => {
-          this.cachedHtml = marked(md);
-          return this.cachedHtml;
+          this.cachedMd = md;
+          return this.cachedMd;
         }),
         catchError((error) =>
           of(

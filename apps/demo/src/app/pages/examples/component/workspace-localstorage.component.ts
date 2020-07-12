@@ -123,7 +123,7 @@ const defaultConfig: IConfig = {
                           r.visible = !r.visible; refreshColumnVisibility()
                         "
                         [class.active]="!r.visible"
-                        class="btn btn-warning"
+                        class="btn btn-primary"
                       >
                         {{ r.type }}
                       </button>
@@ -131,14 +131,14 @@ const defaultConfig: IConfig = {
                   </ng-template>
                   <br />
                   <button
-                    class="btn btn-warning"
+                    class="btn btn-primary"
                     [class.active]="!config.disabled"
                     (click)="toggleDisabled()"
                   >
                     {{ 'isDisabled: ' + config.disabled }}
                   </button>
                   <br />
-                  <button (click)="resetConfig()" class="btn btn-warning">
+                  <button (click)="resetConfig()" class="btn btn-primary">
                     Reset localStorage
                   </button>
                 </div>

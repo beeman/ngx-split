@@ -146,7 +146,7 @@ import { formatDate } from '../format-date';
       <div class="btns">
         <div>
           <button
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.useTransition"
             (click)="action.useTransition = !action.useTransition"
           >
@@ -155,19 +155,19 @@ import { formatDate } from '../format-date';
         </div>
         <div class="btn-group">
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.a1v"
             (click)="action.a1v = !action.a1v"
             >{{ 'area1: ' + action.a1v }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.a2v"
             (click)="action.a2v = !action.a2v"
             >{{ 'area2: ' + action.a2v }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.a3v"
             (click)="action.a3v = !action.a3v"
             >{{ 'area3: ' + action.a3v }}</label
@@ -175,7 +175,7 @@ import { formatDate } from '../format-date';
         </div>
         <div class="btn-group">
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.disabled]="
               action.a1s === 25 || !action.a1v || !action.a2v || !action.a3v
             "
@@ -183,7 +183,7 @@ import { formatDate } from '../format-date';
             >Set sizes to 25/50/25</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.disabled]="
               action.a1s === 40 || !action.a1v || !action.a2v || !action.a3v
             "
@@ -209,7 +209,7 @@ import { formatDate } from '../format-date';
             order="1"
             [visible]="only === 1 || only === 0"
           >
-            <button (click)="left()" class="btn btn-warning">
+            <button (click)="left()" class="btn btn-primary">
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
@@ -219,7 +219,7 @@ import { formatDate } from '../format-date';
             order="2"
             [visible]="only === 2 || only === 0"
           >
-            <button (click)="center()" class="btn btn-warning">
+            <button (click)="center()" class="btn btn-primary">
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: *</p>
@@ -230,7 +230,7 @@ import { formatDate } from '../format-date';
             order="3"
             [visible]="only === 3 || only === 0"
           >
-            <button (click)="right()" class="btn btn-warning">
+            <button (click)="right()" class="btn btn-primary">
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 200px<br />minSize: 200px</p>
@@ -245,7 +245,7 @@ import { formatDate } from '../format-date';
             order="1"
             [visible]="only === 1 || only === 0"
           >
-            <button (click)="left()" class="btn btn-warning">
+            <button (click)="left()" class="btn btn-primary">
               {{ only === 1 ? 'LEFT ⬅️' : 'LEFT ➡' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
@@ -255,7 +255,7 @@ import { formatDate } from '../format-date';
             order="2"
             [visible]="only === 2 || only === 0"
           >
-            <button (click)="center()" class="btn btn-warning">
+            <button (click)="center()" class="btn btn-primary">
               {{ only === 2 ? '➡ ️CENTER ⬅' : '️⬅ ️CENTER ➡' }}
             </button>
             <p>size: 40%</p>
@@ -266,7 +266,7 @@ import { formatDate } from '../format-date';
             order="3"
             [visible]="only === 3 || only === 0"
           >
-            <button (click)="right()" class="btn btn-warning">
+            <button (click)="right()" class="btn btn-primary">
               {{ only === 3 ? '➡ RIGHT' : '⬅️ RIGHT' }}
             </button>
             <p>size: 30%<br />minSize: 30%</p>
@@ -279,19 +279,19 @@ import { formatDate } from '../format-date';
       <div class="btns">
         <div class="btn-group">
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!keepA"
             (click)="keepA = !keepA"
             >{{ 'A: ' + keepA }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!keepB"
             (click)="keepB = !keepB"
             >{{ 'B: ' + keepB }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!keepC"
             (click)="keepC = !keepC"
             >{{ 'C: ' + keepC }}</label

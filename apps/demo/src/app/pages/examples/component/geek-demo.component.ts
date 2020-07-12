@@ -92,7 +92,7 @@ import { AComponent } from './AComponent';
       <div class="opts-prop">
         <div>
           <button
-            class="btn btn-warning btn-sm"
+            class="btn btn-primary btn-sm"
             [class.active]="!d.useTransition"
             (click)="d.useTransition = !d.useTransition"
           >
@@ -102,13 +102,13 @@ import { AComponent } from './AComponent';
         <div>
           <div class="btn-group">
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.dir"
               btnRadio="horizontal"
               >horizontal</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.dir"
               btnRadio="vertical"
               >vertical</label
@@ -119,19 +119,19 @@ import { AComponent } from './AComponent';
           <label>Width:&nbsp;</label>
           <div class="btn-group">
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.width"
               [btnRadio]="null"
               >null</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.width"
               btnRadio="400px"
               >400</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.width"
               btnRadio="600px"
               >600</label
@@ -142,19 +142,19 @@ import { AComponent } from './AComponent';
           <label>Height:&nbsp;</label>
           <div class="btn-group">
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.height"
               [btnRadio]="null"
               >null</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.height"
               btnRadio="200px"
               >200</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.height"
               btnRadio="350px"
               >350</label
@@ -165,19 +165,19 @@ import { AComponent } from './AComponent';
           <label>Gutter size:&nbsp;</label>
           <div class="btn-group">
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterSize"
               [btnRadio]="null"
               >null</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterSize"
               btnRadio="7"
               >7</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterSize"
               btnRadio="22"
               >22</label
@@ -188,19 +188,19 @@ import { AComponent } from './AComponent';
           <label>Gutter step:&nbsp;</label>
           <div class="btn-group">
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterStep"
               [btnRadio]="null"
               >null</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterStep"
               btnRadio="10"
               >10</label
             >
             <label
-              class="btn btn-warning btn-sm"
+              class="btn btn-primary btn-sm"
               [(ngModel)]="d.gutterStep"
               btnRadio="50"
               >50</label
@@ -211,7 +211,7 @@ import { AComponent } from './AComponent';
       <div class="opts-area">
         <div class="title">
           <label><b>Areas (drag elements to change order):</b></label>
-          <button class="btn btn-warning btn-sm" (click)="addArea()">
+          <button class="btn btn-primary btn-sm" (click)="addArea()">
             Add area
           </button>
         </div>
@@ -228,21 +228,21 @@ import { AComponent } from './AComponent';
             <div class="num">{{ item.value.id }}</div>
             <div>
               <button
-                class="btn btn-warning btn-sm"
+                class="btn btn-primary btn-sm"
                 [class.active]="!item.value.present"
                 (click)="item.value.present = !item.value.present"
               >
                 {{ '*ngIf="' + item.value.present + '"' }}
               </button>
               <button
-                class="btn btn-warning btn-sm"
+                class="btn btn-primary btn-sm"
                 [class.active]="!item.value.visible"
                 (click)="item.value.visible = !item.value.visible"
               >
                 {{ '[visible]="' + item.value.visible + '"' }}
               </button>
               <button
-                class="btn btn-warning btn-sm"
+                class="btn btn-primary btn-sm"
                 (click)="removeArea(item.value)"
               >
                 Remove

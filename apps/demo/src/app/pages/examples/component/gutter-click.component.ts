@@ -86,7 +86,7 @@ import { formatDate } from '../format-date';
       <div class="btns">
         <div>
           <button
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!useTransition"
             (click)="useTransition = !useTransition"
           >
@@ -95,7 +95,7 @@ import { formatDate } from '../format-date';
         </div>
         <div>
           <button
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!isDisabled"
             (click)="isDisabled = !isDisabled"
           >
@@ -106,14 +106,14 @@ import { formatDate } from '../format-date';
           <label>Property <code>[gutterDblClickDuration]</code>:&nbsp;</label>
           <div class="btn-group">
             <label
-              class="btn btn-warning"
+              class="btn btn-primary"
               tooltip="When set to 0ms, 'click' is instant and 'dblclick' is impossible."
               [class.disabled]="dblClickTime === 0"
               (click)="dblClickTime = 0"
               >0ms</label
             >
             <label
-              class="btn btn-warning"
+              class="btn btn-primary"
               tooltip="When set to 500ms, 'click' is delayed and 'dblclick' is possible."
               [class.disabled]="dblClickTime === 500"
               (click)="dblClickTime = 500"

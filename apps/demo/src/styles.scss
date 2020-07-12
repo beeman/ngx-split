@@ -1,4 +1,5 @@
 @import "~@kikstart-ui/themes/scss/light";
+@import '~prismjs/themes/prism-okaidia.css';
 
 html,
 body {
@@ -8,33 +9,6 @@ body {
   height: 100%;
   background-color: #f9f9f9;
 }
-
-
-pre {
-  margin: 15px;
-  padding: 10px 30px;
-  background: rgba(232,62,140, .3);
-}
-
-
-sp-ex-changelog {
-  h1 {
-    font-size: 24px;
-    border-bottom: 1px solid #ddd;
-    color: #777777;
-    padding-bottom: 15px;
-    margin-top: 35px;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  p {
-    font-size: 16px;
-  }
-}
-
 
 .split-example-page {
   display: block;

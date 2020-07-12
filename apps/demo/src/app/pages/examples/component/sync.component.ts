@@ -40,7 +40,7 @@ import { formatDate } from '../format-date';
               <div ngx-split-area [size]="sizes[1]">
                 C 2<br />
                 Open devTools to view console.log() statements.<br />
-                <button class="btn btn-warning" (click)="test()">
+                <button class="btn btn-primary" (click)="test()">
                   Trigger change detection
                 </button>
               </div>

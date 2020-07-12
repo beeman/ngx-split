@@ -119,7 +119,7 @@ import { AComponent } from './AComponent';
       <br />
       <div class="btns">
         <button
-          class="btn btn-warning"
+          class="btn btn-primary"
           (click)="
             direction = direction === 'horizontal' ? 'vertical' : 'horizontal'
           "

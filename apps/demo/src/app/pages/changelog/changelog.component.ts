@@ -4,27 +4,19 @@ import { Observable } from 'rxjs';
 import { ChangelogService } from './changelog.service';
 
 @Component({
-  styles: [
-    `
-      :host {
-        display: block;
-        width: 100%;
-        margin: 50px 0;
-      }
-    `,
-  ],
   template: `
-    <div class="container">
-      <div [innerHTML]="changelogHtml$ | async"></div>
+    <div class="container py-5">
+      <h2>Changelog</h2>
+      <ui-markdown [data]="changelogMd$ | async"></ui-markdown>
     </div>
   `,
 })
 export class ChangelogComponent implements OnInit {
-  changelogHtml$: Observable<string>;
+  changelogMd$: Observable<string>;
 
   constructor(private changelogService: ChangelogService) {}
 
   ngOnInit() {
-    this.changelogHtml$ = this.changelogService.getHtml();
+    this.changelogMd$ = this.changelogService.getMd();
   }
 }

@@ -49,19 +49,19 @@ import { AComponent } from './AComponent';
       <div class="btns">
         <div class="btn-group">
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isVisibleA"
             (click)="action.isVisibleA = !action.isVisibleA"
             >{{ 'areaA: ' + action.isVisibleA }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isVisibleB"
             (click)="action.isVisibleB = !action.isVisibleB"
             >{{ 'areaB: ' + action.isVisibleB }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isVisibleC"
             (click)="action.isVisibleC = !action.isVisibleC"
             >{{ 'areaC: ' + action.isVisibleC }}</label
@@ -72,19 +72,19 @@ import { AComponent } from './AComponent';
       <div class="btns">
         <div class="btn-group">
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isPresentA"
             (click)="action.isPresentA = !action.isPresentA"
             >{{ 'areaA: ' + action.isPresentA }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isPresentB"
             (click)="action.isPresentB = !action.isPresentB"
             >{{ 'areaB: ' + action.isPresentB }}</label
           >
           <label
-            class="btn btn-warning"
+            class="btn btn-primary"
             [class.active]="!action.isPresentC"
             (click)="action.isPresentC = !action.isPresentC"
             >{{ 'areaC: ' + action.isPresentC }}</label
@@ -92,7 +92,7 @@ import { AComponent } from './AComponent';
         </div>
       </div>
       <br />
-      <div class="alert alert-danger" role="alert">
+      <div class="alert alert-warning" role="alert">
         <b>Warning:</b><br /><code>[visible]="false"</code> only hides elements
         and don't remove it from the DOM, It could lead to useless change
         detection processing.<br />Use of <code>*ngIf="false"</code> should be

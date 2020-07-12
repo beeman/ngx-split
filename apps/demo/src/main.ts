@@ -4,6 +4,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+import 'prismjs';
+import 'prismjs/components/prism-typescript';
+
 if (environment.production) {
   enableProdMode();
 }

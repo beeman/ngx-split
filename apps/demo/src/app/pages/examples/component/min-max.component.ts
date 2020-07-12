@@ -139,7 +139,7 @@ import { AComponent } from './AComponent';
       <br />
       <div class="btns">
         <button
-          class="btn btn-warning"
+          class="btn btn-primary"
           (click)="restrictMove = restrictMove ? false : true"
         >
           {{ 'Restrict move: "' + restrictMove + '"' }}
