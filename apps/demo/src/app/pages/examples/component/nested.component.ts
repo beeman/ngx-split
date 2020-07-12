@@ -1,15 +1,18 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     class: 'split-example-page',
   },
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.NESTED"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="height: 400px;">
         <ngx-split
           direction="horizontal"
@@ -89,6 +92,13 @@ import { AComponent } from './AComponent';
           </ngx-split-area>
         </ngx-split>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class NestedComponent extends AComponent {}
+export class NestedComponent extends ChangeDetectionComponent {
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
+}

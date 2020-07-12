@@ -1,8 +1,10 @@
 import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { SortableComponent } from 'ngx-bootstrap/sortable';
 import { IAreaDirection } from 'ngx-split';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,8 +17,8 @@ import { AComponent } from './AComponent';
         display: flex;
         justify-content: center;
         align-items: center;
-        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-          1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        color: var(--white);
+        text-shadow: 0 0 7px var(--gray-dark);
       }
 
       .opts-prop {
@@ -49,18 +51,18 @@ import { AComponent } from './AComponent';
       }
 
       .num {
-        color: #000000;
-        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff,
-          1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+        color: var(--white);
+        text-shadow: 0 0 7px var(--gray-dark);
       }
       label {
         margin: 0;
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.GEEK"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="background-color: #e5e0e0;">
         <ngx-split
           [direction]="direction"
@@ -252,9 +254,10 @@ import { AComponent } from './AComponent';
           </div>
         </ng-template>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class GeekDemoComponent extends AComponent {
+export class GeekDemoComponent extends ChangeDetectionComponent {
   @ViewChild(SortableComponent, { static: false })
   sortableComponent: SortableComponent;
 
@@ -292,6 +295,13 @@ export class GeekDemoComponent extends AComponent {
     ],
   };
 
+  example$: Observable<Data>;
+
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
+
   trackByFct(index, area) {
     return area.id;
   }
@@ -320,5 +330,33 @@ function getRandomNum(): number {
 }
 
 function getRandomColor(): string {
-  return '#' + ((Math.random() * 0xffffff) << 0).toString(16);
+  const colors = [
+    'blue',
+    'indigo',
+    'purple',
+    'pink',
+    'red',
+    'orange',
+    'yellow',
+    'green',
+    'teal',
+    'cyan',
+    'white',
+    'gray',
+    'gray-dark',
+    'primary',
+    'secondary',
+    'success',
+    'info',
+    'warning',
+    'danger',
+    'light',
+    'dark',
+  ];
+  const color = getRandomItem(colors);
+  return `var(--${color})`;
+}
+
+function getRandomItem(items: string[]): string {
+  return items[Math.floor(Math.random() * items.length)];
 }

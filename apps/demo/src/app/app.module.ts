@@ -1,3 +1,4 @@
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,12 @@ import { UiModule } from './ui/ui.module';
     HttpClientModule,
     UiModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabled' }),
+  ],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
   ],
   bootstrap: [AppComponent],
 })

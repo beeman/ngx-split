@@ -8,15 +8,15 @@ h4 {
 }
 .sel {
   font-size: 16px;
-  color: #adadad;
+  color: var(--gray);
 }
 tr > th {
-  color: #adadad;
+  color: var(--gray);
 }
 tr > th:first-child,
 .selContent {
   font-weight: bold;
-  color: #e83e8c;
+  color: var(--pink);
 }
 tr > td:first-child {
   font-weight: bold;

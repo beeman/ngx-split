@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { IAreaDirection } from 'ngx-split';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,9 +11,10 @@ import { AComponent } from './AComponent';
     class: 'split-example-page',
   },
   styleUrls: [`./custom-gutter-style.component.scss`],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.STYLE"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example ex-a">
         <ngx-split [direction]="direction" [gutterSize]="35">
           <ngx-split-area [size]="30">
@@ -78,8 +81,14 @@ import { AComponent } from './AComponent';
           {{ 'Toggle direction: "' + direction + '"' }}
         </button>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class CustomGutterStyleComponent extends AComponent {
+export class CustomGutterStyleComponent extends ChangeDetectionComponent {
   direction: IAreaDirection = 'horizontal';
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
 }

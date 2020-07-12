@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,9 +19,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.TOGGLE"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example ex1" style="height: 150px;">
         <ngx-split [gutterSize]="15" (dragEnd)="log('dragEnd', $event)">
           <ngx-split-area
@@ -98,9 +101,10 @@ import { AComponent } from './AComponent';
         detection processing.<br />Use of <code>*ngIf="false"</code> should be
         the default option unless you have reasons to keep DOM elements.
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class TogglingDomAndVisibleComponent extends AComponent {
+export class TogglingDomAndVisibleComponent extends ChangeDetectionComponent {
   action = {
     isVisibleA: true,
     isVisibleB: true,
@@ -111,6 +115,11 @@ export class TogglingDomAndVisibleComponent extends AComponent {
     logs: '',
   };
 
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
   log(eventName, e) {
     this.action.logs = `${new Date()}: ${eventName} > ${e}\n${
       this.action.logs

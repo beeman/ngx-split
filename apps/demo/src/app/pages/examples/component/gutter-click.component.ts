@@ -6,11 +6,12 @@ import {
   OnDestroy,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { getAreaSize, IOutputData, SplitComponent } from 'ngx-split';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { formatDate } from '../format-date';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -56,9 +57,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.CLICK"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
         <ngx-split
           #mySplit
@@ -128,9 +130,10 @@ import { AComponent } from './AComponent';
           <li *ngFor="let l of logMessages" [ngClass]="l.type">{{ l.text }}</li>
         </ul>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class GutterClickComponent extends AComponent
+export class GutterClickComponent extends ChangeDetectionComponent
   implements AfterViewInit, OnDestroy {
   isDisabled = true;
   useTransition = true;
@@ -157,13 +160,17 @@ export class GutterClickComponent extends AComponent
 
   @ViewChild('mySplit', { static: false }) mySplitEl: SplitComponent;
   @ViewChild('logs', { static: false }) logsEl: ElementRef;
-
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
   ngAfterViewInit() {
     this.sub = this.mySplitEl.dragProgress$.subscribe((data) => {
       console.log(
         `${formatDate(
           new Date()
-        )} > dragProgress$ observable emitted but current component change detection didn't runned!`,
+        )} > dragProgress$ observable emitted but current component change detection didn't run!`,
         data
       );
     });

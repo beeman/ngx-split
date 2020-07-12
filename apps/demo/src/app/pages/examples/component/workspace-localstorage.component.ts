@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { getAreaSize, IOutputData } from 'ngx-split';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 interface IConfig {
   columns: Array<{
@@ -84,80 +86,99 @@ const defaultConfig: IConfig = {
       }
     `,
   ],
-  template: ` <ngx-split
-    *ngIf="config"
-    direction="horizontal"
-    [disabled]="config.disabled"
-    (dragEnd)="onDragEnd(-1, $event)"
-  >
-    <ng-template ngFor let-column [ngForOf]="config.columns" let-icol="index">
-      <ngx-split-area
-        *ngIf="column.visible"
-        [order]="icol"
-        [size]="column.size"
+  template: `
+    <ngx-split
+      *ngIf="config"
+      direction="horizontal"
+      [disabled]="config.disabled"
+      (dragEnd)="onDragEnd(-1, $event)"
+    >
+      <ng-template
+        ngFor
+        let-column
+        [ngForOf]="config.columns"
+        let-colindex="index"
       >
-        <ngx-split
-          direction="vertical"
-          [disabled]="config.disabled"
-          (dragEnd)="onDragEnd(icol, $event)"
+        <ngx-split-area
+          *ngIf="column.visible"
+          [order]="colindex"
+          [size]="column.size"
         >
-          <ng-template ngFor let-row [ngForOf]="column.rows" let-irow="index">
-            <ngx-split-area
-              *ngIf="row.visible"
-              [order]="irow"
-              [size]="row.size"
+          <ngx-split
+            direction="vertical"
+            [disabled]="config.disabled"
+            (dragEnd)="onDragEnd(colindex, $event)"
+          >
+            <ng-template
+              ngFor
+              let-row
+              [ngForOf]="column.rows"
+              let-rowindex="index"
             >
-              <div [ngSwitch]="row.type" class="bloc">
-                <div *ngSwitchCase="'doc'" class="explanations">
-                  <ui-example-title
-                    [type]="exampleEnum.WORKSPACE"
-                  ></ui-example-title>
-                  <p>
-                    All areas size and visibility are saved to localStorage.<br />
-                    Toggle areas visibility using following buttons:
-                  </p>
-                  <ng-template ngFor let-c [ngForOf]="config.columns">
-                    <ng-template ngFor let-r [ngForOf]="c.rows">
-                      <button
-                        *ngIf="r.type !== 'doc'"
-                        (click)="
-                          r.visible = !r.visible; refreshColumnVisibility()
-                        "
-                        [class.active]="!r.visible"
-                        class="btn btn-primary"
-                      >
-                        {{ r.type }}
-                      </button>
+              <ngx-split-area
+                *ngIf="row.visible"
+                [order]="rowindex"
+                [size]="row.size"
+              >
+                <div [ngSwitch]="row.type" class="bloc">
+                  <div *ngSwitchCase="'doc'" class="explanations">
+                    <ui-example-title
+                      [example]="example$ | async"
+                    ></ui-example-title>
+                    <p>
+                      All areas size and visibility are saved to
+                      localStorage.<br />
+                      Toggle areas visibility using following buttons:
+                    </p>
+                    <ng-template ngFor let-c [ngForOf]="config.columns">
+                      <ng-template ngFor let-r [ngForOf]="c.rows">
+                        <button
+                          *ngIf="r.type !== 'doc'"
+                          (click)="
+                            r.visible = !r.visible; refreshColumnVisibility()
+                          "
+                          [class.active]="!r.visible"
+                          class="btn btn-primary"
+                        >
+                          {{ r.type }}
+                        </button>
+                      </ng-template>
                     </ng-template>
-                  </ng-template>
-                  <br />
-                  <button
-                    class="btn btn-primary"
-                    [class.active]="!config.disabled"
-                    (click)="toggleDisabled()"
-                  >
-                    {{ 'isDisabled: ' + config.disabled }}
-                  </button>
-                  <br />
-                  <button (click)="resetConfig()" class="btn btn-primary">
-                    Reset localStorage
-                  </button>
+                    <br />
+                    <button
+                      class="btn btn-primary"
+                      [class.active]="!config.disabled"
+                      (click)="toggleDisabled()"
+                    >
+                      {{ 'isDisabled: ' + config.disabled }}
+                    </button>
+                    <br />
+                    <button (click)="resetConfig()" class="btn btn-primary">
+                      Reset localStorage
+                    </button>
+                  </div>
+                  <div *ngSwitchDefault class="panel">
+                    <p>{{ row.type }}</p>
+                  </div>
                 </div>
-                <div *ngSwitchDefault class="panel">
-                  <p>{{ row.type }}</p>
-                </div>
-              </div>
-            </ngx-split-area>
-          </ng-template>
-        </ngx-split>
-      </ngx-split-area>
-    </ng-template>
-  </ngx-split>`,
+              </ngx-split-area>
+            </ng-template>
+          </ngx-split>
+        </ngx-split-area>
+      </ng-template>
+    </ngx-split>
+  `,
 })
-export class WorkspaceLocalstorageComponent extends AComponent
+export class WorkspaceLocalstorageComponent extends ChangeDetectionComponent
   implements OnInit {
   localStorageName = 'ngx-split-ws';
   config: IConfig = null;
+
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
 
   ngOnInit() {
     if (localStorage.getItem(this.localStorageName)) {
@@ -173,9 +194,9 @@ export class WorkspaceLocalstorageComponent extends AComponent
     localStorage.removeItem(this.localStorageName);
   }
 
-  onDragEnd(columnindex: number, e: IOutputData) {
+  onDragEnd(columnIndex: number, e: IOutputData) {
     // Column dragged
-    if (columnindex === -1) {
+    if (columnIndex === -1) {
       // Set size for all visible columns
       this.config.columns
         .filter((c) => c.visible === true)
@@ -186,7 +207,7 @@ export class WorkspaceLocalstorageComponent extends AComponent
     // Row dragged
     else {
       // Set size for all visible rows from specified column
-      this.config.columns[columnindex].rows
+      this.config.columns[columnIndex].rows
         .filter((r) => r.visible === true)
         .forEach((row, index) => (row.size = getAreaSize(e.sizes[index])));
     }

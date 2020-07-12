@@ -4,10 +4,12 @@ import {
   ElementRef,
   ViewChild,
 } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { getAreaSize, IAreaSize, IOutputData } from 'ngx-split';
+import { Observable } from 'rxjs';
 import { formatDate } from '../format-date';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,20 +54,20 @@ import { AComponent } from './AComponent';
         width: 100%;
         overflow-y: scroll;
         overflow-x: hidden;
-        border: 1px solid #bfbfbf;
-        background-color: #e8e8e8;
+        border: 1px solid var(--gray);
+        background-color: var(--light);
       }
 
       .ngx-split-area {
-        background: lightgrey;
+        background: var(--gray);
       }
 
       .ngx-split-area.ngx-min {
-        background: green;
+        background: var(--green);
       }
 
       .ngx-split-area.ngx-max {
-        background: red;
+        background: var(--red);
       }
 
       :host .ex2 button {
@@ -85,9 +87,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.TRANSITION"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
         <ngx-split
           direction="horizontal"
@@ -213,7 +216,7 @@ import { AComponent } from './AComponent';
       </div>
       <div class="logs">
         <p>Events <code>(transitionEnd)</code>:</p>
-        <ul #logs>
+        <ul #logs class="list-unstyled p-2">
           <li *ngFor="let l of logMessages" [ngClass]="l.type">{{ l.text }}</li>
         </ul>
       </div>
@@ -363,9 +366,10 @@ import { AComponent } from './AComponent';
           </ngx-split-area>
         </ngx-split>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class TransitionsComponent extends AComponent {
+export class TransitionsComponent extends ChangeDetectionComponent {
   actionSize: Record<string, IAreaSize> = {
     a1s: 25,
     a2s: 50,
@@ -385,6 +389,12 @@ export class TransitionsComponent extends AComponent {
   logMessages: Array<{ type: string; text: string }> = [];
 
   @ViewChild('logs', { static: false }) logsEl: ElementRef;
+  example$: Observable<Data>;
+
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
 
   log(e) {
     this.logMessages.push({

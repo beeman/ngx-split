@@ -1,10 +1,7 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { IExampleData } from '../../interfaces/example-data';
-
-import { examples } from '../../example-list';
 
 @Component({
   selector: 'ui-topbar',
@@ -28,11 +25,6 @@ import { examples } from '../../example-list';
         color: #000000;
       }
 
-      .navbar-toggler {
-        float: right;
-        margin-right: 120px;
-      }
-
       @media (max-width: 992px) {
         .container-fluid {
           padding-left: 0;
@@ -47,14 +39,14 @@ import { examples } from '../../example-list';
     class: 'navbar navbar-expand-lg fixed-top navbar-dark bg-dark',
   },
   template: `
-    <a class="navbar-brand" href="#">ngx-split</a>
     <button
-      class="navbar-toggler hidden-lg-up"
+      class="navbar-toggler hidden-lg-up mr-2"
       (click)="isCollapsed = !isCollapsed"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+    <a class="navbar-brand mr-auto" routerLink="/">ngx-split</a>
+    <div class="collapse navbar-collapse ml-2" [collapse]="isCollapsed">
       <ul class="nav navbar-nav">
         <li
           class="nav-item"
@@ -69,10 +61,10 @@ import { examples } from '../../example-list';
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link" routerLink="/documentation">Documentation</a>
         </li>
-        <li class="nav-item dropdown" dropdown>
-          <a class="nav-link dropdown-toggle" dropdownToggle
-            >Examples <span class="caret"></span
-          ></a>
+        <li class="nav-item dropdown" dropdown routerLinkActive="active">
+          <a class="nav-link dropdown-toggle" dropdownToggle>
+            Examples <span class="caret"></span>
+          </a>
           <ul *dropdownMenu class="dropdown-menu" role="menu">
             <li
               *ngFor="let ex of examples"
@@ -91,17 +83,67 @@ import { examples } from '../../example-list';
   `,
 })
 export class TopbarComponent {
-  examples: Array<IExampleData>;
+  examples = [
+    {
+      path: 'examples/simple-split',
+      label: 'Simple split',
+    },
+    {
+      path: 'examples/min-max-split',
+      label: 'Split with minSize & maxSize',
+    },
+    {
+      path: 'examples/nested-split',
+      label: 'Nested splits',
+    },
+    {
+      path: 'examples/iframes',
+      label: 'Split containing iframes',
+    },
+    {
+      path: 'examples/split-transitons',
+      label: 'Split with transitions',
+    },
+    {
+      path: 'examples/sync-split',
+      label: 'Split synchronized',
+    },
+    {
+      path: 'examples/custom-gutter-style',
+      label: 'Split with custom gutter style',
+    },
+    {
+      path: 'examples/toggling-dom-and-visibility',
+      label:
+        'Toggling areas using <code>[visible]</code> and <code>*ngIf</code>',
+    },
+    {
+      path: 'examples/gutter-click-roll-unroll',
+      label: 'Roll/unroll area on <code>(gutterClick)</code> event',
+    },
+    {
+      path: 'examples/access-from-class',
+      label: 'Access and interact <code>SplitComponent</code> from TS class',
+    },
+    {
+      path: 'examples/geek-demo',
+      label: 'Geek demo (100% dynamic)',
+    },
+    {
+      path: 'examples/dir-rtl',
+      label: 'Split inside right to left (RTL) page',
+    },
+    {
+      path: 'examples/workspace-localstorage',
+      label: 'Fullscreen workspace saved in localStorage',
+    },
+  ];
   isCollapsed = true;
 
   constructor(private sanitizer: DomSanitizer, public router: Router) {
-    this.examples = examples;
-
     this.router.events
       .pipe(filter((e) => e instanceof NavigationStart))
-      .subscribe(() => {
-        this.isCollapsed = true;
-      });
+      .subscribe(() => (this.isCollapsed = true));
   }
 
   transform(label: string) {

@@ -5,11 +5,12 @@ import {
   AfterViewInit,
   OnDestroy,
 } from '@angular/core';
-import { Subscription, merge } from 'rxjs';
+import { ActivatedRoute, Data } from '@angular/router';
+import { Subscription, merge, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SplitComponent } from 'ngx-split';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 import { formatDate } from '../format-date';
 
 @Component({
@@ -17,9 +18,10 @@ import { formatDate } from '../format-date';
   host: {
     class: 'split-example-page',
   },
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.SYNC"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
         <ngx-split direction="vertical">
           <div ngx-split-area [size]="20">
@@ -48,9 +50,10 @@ import { formatDate } from '../format-date';
           </ngx-split-area>
         </ngx-split>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class SyncComponent extends AComponent
+export class SyncComponent extends ChangeDetectionComponent
   implements AfterViewInit, OnDestroy {
   @ViewChild('mySplitA', { static: false }) mySplitAEl: SplitComponent;
   @ViewChild('mySplitB', { static: false }) mySplitBEl: SplitComponent;
@@ -58,7 +61,11 @@ export class SyncComponent extends AComponent
 
   sizes = [25, 75];
   sub: Subscription;
-
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
   ngAfterViewInit() {
     this.sub = merge(
       this.mySplitAEl.dragProgress$.pipe(map((data) => ({ name: 'A', data }))),
@@ -88,7 +95,7 @@ export class SyncComponent extends AComponent
       console.log(
         `${formatDate(
           new Date()
-        )} > dragProgress$ observable emitted, splits synchronized but current component change detection didn't runned! (from split ${
+        )} > dragProgress$ observable emitted, splits synchronized but current component change detection didn't run! (from split ${
           d.name
         })`
       );

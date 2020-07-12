@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { IAreaDir } from 'ngx-split';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,9 +20,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.DIR"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example">
         <ngx-split [dir]="dir">
           <ngx-split-area [size]="20">
@@ -75,8 +78,15 @@ import { AComponent } from './AComponent';
           {{ 'Toggle dir: "' + dir + '"' }}
         </button>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class DirRtlComponent extends AComponent {
+export class DirRtlComponent extends ChangeDetectionComponent {
   dir: IAreaDir = 'rtl';
+
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
 }

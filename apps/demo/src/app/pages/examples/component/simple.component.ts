@@ -1,7 +1,9 @@
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
 import { SplitComponent, SplitAreaDirective } from 'ngx-split';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -18,9 +20,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.SIMPLE"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <h5>Percent mode:</h5>
       <div class="split-example ex-percent">
         <ngx-split
@@ -127,9 +130,10 @@ import { AComponent } from './AComponent';
           {{ 'Toggle direction: "' + direction + '"' }}
         </button>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class SimpleComponent extends AComponent {
+export class SimpleComponent extends ChangeDetectionComponent {
   @ViewChild('split', { static: false }) split: SplitComponent;
   @ViewChild('area1', { static: false }) area1: SplitAreaDirective;
   @ViewChild('area2', { static: false }) area2: SplitAreaDirective;
@@ -146,9 +150,11 @@ export class SimpleComponent extends AComponent {
       area3: 160,
     },
   };
+  example$: Observable<Data>;
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
     super();
+    this.example$ = this.route.data;
 
     setTimeout(() => {
       console.log('>>> split > ', this.split);

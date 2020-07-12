@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -9,6 +11,11 @@ import { AComponent } from './AComponent';
   },
   styles: [
     `
+      iframe {
+        border: 0;
+        height: 100%;
+        width: 100%;
+      }
       .ngx-split-area > div {
         position: relative;
         height: 100%;
@@ -25,9 +32,10 @@ import { AComponent } from './AComponent';
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.IFRAME"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <div class="split-example" style="height: 400px;">
         <ngx-split
           direction="horizontal"
@@ -36,12 +44,7 @@ import { AComponent } from './AComponent';
         >
           <ngx-split-area [size]="40">
             <div>
-              <iframe
-                src="https://beeman.github.io/ngx-split"
-                frameborder="0"
-                width="100%"
-                height="100%"
-              ></iframe>
+              <iframe src="https://beeman.github.io/ngx-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
@@ -50,12 +53,7 @@ import { AComponent } from './AComponent';
           </ngx-split-area>
           <ngx-split-area [size]="60">
             <div>
-              <iframe
-                src="https://beeman.github.io/ngx-split"
-                frameborder="0"
-                width="100%"
-                height="100%"
-              ></iframe>
+              <iframe src="https://beeman.github.io/ngx-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
@@ -64,8 +62,15 @@ import { AComponent } from './AComponent';
           </ngx-split-area>
         </ngx-split>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class IframeComponent extends AComponent {
+export class IframeComponent extends ChangeDetectionComponent {
   showIframeHider = false;
+  example$: Observable<Data>;
+
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
 }

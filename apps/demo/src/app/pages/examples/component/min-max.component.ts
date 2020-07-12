@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { Observable } from 'rxjs';
 
-import { AComponent } from './AComponent';
+import { ChangeDetectionComponent } from './change-detection.component';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -36,12 +38,12 @@ import { AComponent } from './AComponent';
       .txt-minmax > p {
         font-size: 30px;
         font-weight: bold;
-        color: #cccccc;
+        color: var(--gray);
         text-align: center;
       }
 
       ngx-split-area {
-        background: lightblue;
+        background: var(--cyan);
         transition: background 0.2s;
         position: relative;
         overflow: hidden !important;
@@ -56,28 +58,29 @@ import { AComponent } from './AComponent';
       }
 
       ngx-split-area.ngx-min {
-        background: green;
+        background: var(--green);
       }
       ngx-split-area.ngx-min .txt-min {
         opacity: 1;
       }
       ngx-split-area.ngx-max {
-        background: red;
+        background: var(--red);
       }
       ngx-split-area.ngx-max .txt-max {
         opacity: 1;
       }
       ngx-split-area.ngx-min.ngx-max {
-        background: #ff77e7;
+        background: var(--pink);
       }
       ngx-split-area.ngx-min.ngx-max .txt-minmax {
         opacity: 1;
       }
     `,
   ],
-  template: ` {{ testChangeDetectorRun() }}
+  template: `
+    {{ testChangeDetectorRun() }}
     <div class="container">
-      <ui-example-title [type]="exampleEnum.MINMAX"></ui-example-title>
+      <ui-example-title [example]="example$ | async"></ui-example-title>
       <h5>Percent mode:</h5>
       <div class="split-example ex-percent">
         <ngx-split
@@ -142,12 +145,18 @@ import { AComponent } from './AComponent';
           {{ 'Restrict move: "' + restrictMove + '"' }}
         </button>
       </div>
-    </div>`,
+    </div>
+  `,
 })
-export class MinMaxComponent extends AComponent {
+export class MinMaxComponent extends ChangeDetectionComponent {
   restrictMove = false;
 
-  //
+  example$: Observable<Data>;
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.example$ = this.route.data;
+  }
+
   log(x) {
     console.log(
       'dragEnd ',

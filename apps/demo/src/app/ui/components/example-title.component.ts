@@ -4,41 +4,30 @@ import {
   SafeHtml,
   SafeResourceUrl,
 } from '@angular/platform-browser';
-import { ExampleEnum } from '../../example-enum';
-
-import { examples } from '../../example-list';
 
 @Component({
   selector: 'ui-example-title',
-  styles: [
-    `
-      h4 {
-        display: flex;
-        align-items: center;
-      }
-      h4 > div {
-        margin-right: 20px;
-      }
-    `,
-  ],
-  template: ` <h4>
-      <div [innerHTML]="label"></div>
-      <a class="btn btn-secondary" [href]="url" target="_blank">View code</a>
+  template: `
+    <h4 class="d-flex align-items-center">
+      <div *ngIf="label" [innerHTML]="label" class="mr-2"></div>
+      <a *ngIf="url" class="btn btn-secondary" [href]="url" target="_blank">
+        View code
+      </a>
     </h4>
-    <hr />`,
+    <hr />
+  `,
 })
 export class ExampleTitleComponent {
   label: SafeHtml;
   url: SafeResourceUrl;
 
-  _type: ExampleEnum;
-  @Input() set type(v: ExampleEnum) {
-    const ex = examples.find((e) => e.type === v);
-    if (!ex) return;
-
-    this._type = v;
-    this.label = this.sanitizer.bypassSecurityTrustHtml(ex.label);
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(ex.srcUrl);
+  @Input() set example(ex) {
+    this.label = ex.label
+      ? this.sanitizer.bypassSecurityTrustHtml(ex.label)
+      : null;
+    this.url = ex.srcUrl
+      ? this.sanitizer.bypassSecurityTrustResourceUrl(ex.srcUrl)
+      : null;
   }
 
   constructor(private sanitizer: DomSanitizer) {}

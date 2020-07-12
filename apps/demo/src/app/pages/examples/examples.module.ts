@@ -1,7 +1,7 @@
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { examples } from '../../example-list';
+import { routes } from './example-routes';
 import { UiModule } from '../../ui/ui.module';
 
 import { ClassAccessComponent } from './component/class-access.component';
@@ -34,12 +34,6 @@ import { WorkspaceLocalstorageComponent } from './component/workspace-localstora
     TransitionsComponent,
     WorkspaceLocalstorageComponent,
   ],
-  imports: [RouterModule.forChild([...examples]), UiModule],
-  providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy,
-    },
-  ],
+  imports: [RouterModule.forChild([...routes]), UiModule],
 })
 export class ExamplesModule {}
