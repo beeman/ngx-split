@@ -44,7 +44,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
         >
           <ui-split-area [size]="40">
             <div>
-              <iframe src="https://beeman.github.io/ui-split"></iframe>
+              <iframe src="https://beeman.github.io/ngx-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
@@ -53,7 +53,7 @@ import { ChangeDetectionComponent } from './change-detection.component';
           </ui-split-area>
           <ui-split-area [size]="60">
             <div>
-              <iframe src="https://beeman.github.io/ui-split"></iframe>
+              <iframe src="https://beeman.github.io/ngx-split"></iframe>
               <div
                 [hidden]="showIframeHider === false"
                 class="hack-iframe-hider"
