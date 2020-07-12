@@ -77,5 +77,5 @@ import { AComponent } from './AComponent';
     </div>`,
 })
 export class DirRtlComponent extends AComponent {
-  dir: string = 'rtl';
+  dir = 'rtl';
 }

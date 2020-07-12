@@ -134,7 +134,7 @@ export class SimpleComponent extends AComponent {
   @ViewChild('area1', { static: false }) area1: SplitAreaDirective;
   @ViewChild('area2', { static: false }) area2: SplitAreaDirective;
 
-  direction: string = 'horizontal';
+  direction = 'horizontal';
   sizes = {
     percent: {
       area1: 30,

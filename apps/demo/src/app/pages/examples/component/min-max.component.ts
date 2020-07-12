@@ -148,7 +148,7 @@ import { AComponent } from './AComponent';
     </div>`,
 })
 export class MinMaxComponent extends AComponent {
-  restrictMove: boolean = false;
+  restrictMove = false;
 
   //
   log(x) {

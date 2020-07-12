@@ -356,7 +356,7 @@ export class TransitionsComponent extends AComponent {
 
   //
 
-  only: number = 0;
+  only = 0;
 
   left() {
     switch (this.only) {
@@ -397,7 +397,7 @@ export class TransitionsComponent extends AComponent {
 
   //
 
-  keepA: boolean = true;
-  keepB: boolean = true;
-  keepC: boolean = true;
+  keepA = true;
+  keepB = true;
+  keepC = true;
 }

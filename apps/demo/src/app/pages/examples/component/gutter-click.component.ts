@@ -132,9 +132,9 @@ import { formatDate } from '../format-date';
 })
 export class GutterClickComponent extends AComponent
   implements AfterViewInit, OnDestroy {
-  isDisabled: boolean = true;
-  useTransition: boolean = true;
-  dblClickTime: number = 0;
+  isDisabled = true;
+  useTransition = true;
+  dblClickTime = 0;
   logMessages: Array<{ type: string; text: string }> = [];
   areas = [
     {
