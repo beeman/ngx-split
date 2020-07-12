@@ -22,19 +22,19 @@ import { formatDate } from '../format-date';
       <ui-example-title [type]="exampleEnum.SYNC"></ui-example-title>
       <div class="split-example">
         <ngx-split direction="vertical">
-          <div ngx-split-area size="20">
+          <div ngx-split-area [size]="20">
             <ngx-split direction="horizontal" #mySplitA>
               <div ngx-split-area [size]="sizes[0]">A 1</div>
               <ngx-split-area [size]="sizes[1]">A 2</ngx-split-area>
             </ngx-split>
           </div>
-          <div ngx-split-area size="20">
+          <div ngx-split-area [size]="20">
             <ngx-split direction="horizontal" #mySplitB>
               <div ngx-split-area [size]="sizes[0]">B 1</div>
               <ngx-split-area [size]="sizes[1]">B 2</ngx-split-area>
             </ngx-split>
           </div>
-          <ngx-split-area size="60">
+          <ngx-split-area [size]="60">
             <ngx-split direction="horizontal" #mySplitC>
               <ngx-split-area [size]="sizes[0]">C 1</ngx-split-area>
               <div ngx-split-area [size]="sizes[1]">

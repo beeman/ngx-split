@@ -1,4 +1,5 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { IAreaDirection } from 'ngx-split';
 
 import { AComponent } from './AComponent';
 
@@ -12,7 +13,7 @@ import { AComponent } from './AComponent';
     <div class="container">
       <ui-example-title [type]="exampleEnum.STYLE"></ui-example-title>
       <div class="split-example ex-a">
-        <ngx-split [direction]="direction" gutterSize="35">
+        <ngx-split [direction]="direction" [gutterSize]="35">
           <ngx-split-area [size]="30">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -41,7 +42,11 @@ import { AComponent } from './AComponent';
         </ngx-split>
       </div>
       <div class="split-example ex-b">
-        <ngx-split [direction]="direction" restrictMove="true" gutterSize="1">
+        <ngx-split
+          [direction]="direction"
+          [restrictMove]="true"
+          [gutterSize]="1"
+        >
           <ngx-split-area [size]="30"
             ><p>
               A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A A
@@ -76,5 +81,5 @@ import { AComponent } from './AComponent';
     </div>`,
 })
 export class CustomGutterStyleComponent extends AComponent {
-  direction = 'horizontal';
+  direction: IAreaDirection = 'horizontal';
 }

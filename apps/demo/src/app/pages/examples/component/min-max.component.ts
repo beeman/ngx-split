@@ -83,20 +83,20 @@ import { AComponent } from './AComponent';
         <ngx-split
           unit="percent"
           [restrictMove]="restrictMove"
-          gutterSize="30"
+          [gutterSize]="30"
           (dragEnd)="log($event)"
         >
-          <ngx-split-area size="30" minSize="20" maxSize="30">
+          <ngx-split-area [size]="30" [minSize]="20" [maxSize]="30">
             <p>size="30"<br />minSize="20"<br />maxSize="30"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
           </ngx-split-area>
-          <ngx-split-area size="40" minSize="30" maxSize="50">
+          <ngx-split-area [size]="40" [minSize]="30" [maxSize]="50">
             <p>size="40"<br />minSize="30"<br />maxSize="50"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
           </ngx-split-area>
-          <ngx-split-area size="30" minSize="20" maxSize="50">
+          <ngx-split-area [size]="30" [minSize]="20" [maxSize]="50">
             <p>size="30"<br />minSize="20"<br />maxSize="50"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
@@ -108,10 +108,10 @@ import { AComponent } from './AComponent';
         <ngx-split
           unit="pixel"
           [restrictMove]="restrictMove"
-          gutterSize="30"
+          [gutterSize]="30"
           (dragEnd)="log($event)"
         >
-          <ngx-split-area size="200" minSize="100" maxSize="200">
+          <ngx-split-area [size]="200" [minSize]="100" [maxSize]="200">
             <p>size="200"<br />minSize="100"<br />maxSize="200"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
@@ -121,7 +121,7 @@ import { AComponent } from './AComponent';
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
           </ngx-split-area>
-          <ngx-split-area size="150" lockSize="true">
+          <ngx-split-area [size]="150" [lockSize]="true">
             <p>
               size="150"<br />lockSize="true"<br /><br />Same as<br />minSize="150"<br />maxSize="150"
             </p>
@@ -129,7 +129,7 @@ import { AComponent } from './AComponent';
               <p>MIN<br />&<br />MAX</p>
             </div>
           </ngx-split-area>
-          <ngx-split-area size="250" minSize="250" maxSize="400">
+          <ngx-split-area [size]="250" [minSize]="250" [maxSize]="400">
             <p>size="250"<br />minSize="250"<br />maxSize="400"</p>
             <div class="txt-min"><p>MIN</p></div>
             <div class="txt-max"><p>MAX</p></div>
@@ -138,10 +138,7 @@ import { AComponent } from './AComponent';
       </div>
       <br />
       <div class="btns">
-        <button
-          class="btn btn-primary"
-          (click)="restrictMove = restrictMove ? false : true"
-        >
+        <button class="btn btn-primary" (click)="restrictMove = !restrictMove">
           {{ 'Restrict move: "' + restrictMove + '"' }}
         </button>
       </div>

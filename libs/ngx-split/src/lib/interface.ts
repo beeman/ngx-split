@@ -5,7 +5,10 @@ export interface IPoint {
   y: number;
 }
 
+export type IAreaDir = 'ltr' | 'rtl';
+export type IAreaDirection = 'horizontal' | 'vertical';
 export type IAreaSize = number | '*';
+export type IAreaUnit = 'percent' | 'pixel';
 
 export interface IArea {
   component: SplitAreaDirective;

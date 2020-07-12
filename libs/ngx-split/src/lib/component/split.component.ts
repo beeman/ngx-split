@@ -23,6 +23,9 @@ import {
   IAreaSnapshot,
   IOutputData,
   IOutputAreaSizes,
+  IAreaDirection,
+  IAreaUnit,
+  IAreaDir,
 } from '../interface';
 import { SplitAreaDirective } from '../directive/splitArea.directive';
 import {
@@ -96,7 +99,7 @@ import {
     </ng-template>`,
 })
 export class SplitComponent implements AfterViewInit, OnDestroy {
-  @Input() set direction(v: 'horizontal' | 'vertical') {
+  @Input() set direction(v: IAreaDirection) {
     this._direction = v === 'vertical' ? 'vertical' : 'horizontal';
 
     this.renderer.addClass(this.elRef.nativeElement, `ngx-${this._direction}`);
@@ -108,11 +111,11 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this.build(false, false);
   }
 
-  get direction(): 'horizontal' | 'vertical' {
+  get direction(): IAreaDirection {
     return this._direction;
   }
 
-  @Input() set unit(v: 'percent' | 'pixel') {
+  @Input() set unit(v: IAreaUnit) {
     this._unit = v === 'pixel' ? 'pixel' : 'percent';
 
     this.renderer.addClass(this.elRef.nativeElement, `ngx-${this._unit}`);
@@ -124,7 +127,7 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     this.build(false, true);
   }
 
-  get unit(): 'percent' | 'pixel' {
+  get unit(): IAreaUnit {
     return this._unit;
   }
 
@@ -178,13 +181,13 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     return this._disabled;
   }
 
-  @Input() set dir(v: 'ltr' | 'rtl') {
+  @Input() set dir(v: IAreaDir) {
     this._dir = v === 'rtl' ? 'rtl' : 'ltr';
 
     this.renderer.setAttribute(this.elRef.nativeElement, 'dir', this._dir);
   }
 
-  get dir(): 'ltr' | 'rtl' {
+  get dir(): IAreaDir {
     return this._dir;
   }
 
@@ -210,14 +213,14 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     // To force adding default class, could be override by user @Input() or not
     this.direction = this._direction;
   }
-  private _direction: 'horizontal' | 'vertical' = 'horizontal';
-  private _unit: 'percent' | 'pixel' = 'percent';
+  private _direction: IAreaDirection = 'horizontal';
+  private _unit: IAreaUnit = 'percent';
   private _gutterSize = 11;
   private _gutterStep = 1;
   private _restrictMove = false;
   private _useTransition = false;
   private _disabled = false;
-  private _dir: 'ltr' | 'rtl' = 'ltr';
+  private _dir: IAreaDir = 'ltr';
   private _gutterDblClickDuration = 0;
 
   @Output() dragStart = new EventEmitter<IOutputData>(false);
@@ -313,13 +316,13 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
   }
 
   public hideArea(comp: SplitAreaDirective): void {
-    const area = this.displayedAreas.find((a) => a.component === comp);
-    if (area === undefined) {
+    const currentArea = this.displayedAreas.find((a) => a.component === comp);
+    if (currentArea === undefined) {
       return;
     }
 
     const areas = this.displayedAreas.splice(
-      this.displayedAreas.indexOf(area),
+      this.displayedAreas.indexOf(currentArea),
       1
     );
     areas.forEach((area) => {
@@ -381,7 +384,7 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
     if (resetSizes === true) {
       const useUserSizes = isUserSizesValid(
         this.unit,
-        this.displayedAreas.map((a) => a.component.size)
+        this.displayedAreas.map((a) => getAreaSize(a.component.size))
       );
 
       switch (this.unit) {

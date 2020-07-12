@@ -63,7 +63,7 @@ import { AComponent } from './AComponent';
         <ngx-split
           #mySplit
           [disabled]="isDisabled"
-          gutterSize="10"
+          [gutterSize]="10"
           [gutterDblClickDuration]="dblClickTime"
           direction="horizontal"
           [useTransition]="useTransition"
@@ -71,7 +71,7 @@ import { AComponent } from './AComponent';
           (dragEnd)="log('dragEnd', $event)"
           (gutterClick)="log('gutterClick', $event)"
           (gutterDblClick)="log('gutterDblClick', $event)"
-          (transitionEnd)="log('transitionEnd', $event)"
+          (transitionEnd)="log('transitionEnd')"
         >
           <ngx-split-area
             *ngFor="let a of areas"
@@ -169,7 +169,7 @@ export class GutterClickComponent extends AComponent
     });
   }
 
-  log(type: string, e: IOutputData) {
+  log(type: string, e?: IOutputData) {
     this.logMessages.push({
       type,
       text: `${formatDate(new Date())} > ${type} event > ${JSON.stringify(e)}`,

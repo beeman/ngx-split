@@ -34,7 +34,7 @@ import { AComponent } from './AComponent';
           (dragStart)="showIframeHider = true"
           (dragEnd)="showIframeHider = false"
         >
-          <ngx-split-area size="40">
+          <ngx-split-area [size]="40">
             <div>
               <iframe
                 src="https://beeman.github.io/ngx-split"
@@ -48,7 +48,7 @@ import { AComponent } from './AComponent';
               ></div>
             </div>
           </ngx-split-area>
-          <ngx-split-area size="60">
+          <ngx-split-area [size]="60">
             <div>
               <iframe
                 src="https://beeman.github.io/ngx-split"

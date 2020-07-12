@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { SplitComponent } from '../component/split.component';
+import { IAreaSize } from '../interface';
 import { getInputPositiveNumber, getInputBoolean } from '../utils';
 
 @Directive({
@@ -28,21 +29,17 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     return this._order;
   }
 
-  ////
+  private _size: IAreaSize = null;
 
-  private _size: number | null = null;
-
-  @Input() set size(v: number | null) {
+  @Input() set size(v: IAreaSize) {
     this._size = getInputPositiveNumber(v, null);
 
     this.split.updateArea(this, false, true);
   }
 
-  get size(): number | null {
+  get size(): IAreaSize {
     return this._size;
   }
-
-  ////
 
   private _minSize: number | null = null;
 
@@ -56,8 +53,6 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     return this._minSize;
   }
 
-  ////
-
   private _maxSize: number | null = null;
 
   @Input() set maxSize(v: number | null) {
@@ -70,9 +65,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     return this._maxSize;
   }
 
-  ////
-
-  private _lockSize: boolean = false;
+  private _lockSize = false;
 
   @Input() set lockSize(v: boolean) {
     this._lockSize = getInputBoolean(v);
@@ -84,9 +77,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     return this._lockSize;
   }
 
-  ////
-
-  private _visible: boolean = true;
+  private _visible = true;
 
   @Input() set visible(v: boolean) {
     this._visible = getInputBoolean(v);
@@ -103,8 +94,6 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
   get visible(): boolean {
     return this._visible;
   }
-
-  ////
 
   private transitionListener: Function;
   private readonly lockListeners: Array<Function> = [];

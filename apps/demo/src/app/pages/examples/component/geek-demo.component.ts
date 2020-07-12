@@ -1,5 +1,6 @@
 import { Component, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { SortableComponent } from 'ngx-bootstrap/sortable';
+import { IAreaDirection } from 'ngx-split';
 
 import { AComponent } from './AComponent';
 
@@ -62,7 +63,7 @@ import { AComponent } from './AComponent';
       <ui-example-title [type]="exampleEnum.GEEK"></ui-example-title>
       <div class="split-example" style="background-color: #e5e0e0;">
         <ngx-split
-          [direction]="d.dir"
+          [direction]="direction"
           [restrictMove]="d.restrictMove"
           [gutterSize]="d.gutterSize"
           [gutterStep]="d.gutterStep"
@@ -103,13 +104,13 @@ import { AComponent } from './AComponent';
           <div class="btn-group">
             <label
               class="btn btn-primary btn-sm"
-              [(ngModel)]="d.dir"
+              [(ngModel)]="direction"
               btnRadio="horizontal"
               >horizontal</label
             >
             <label
               class="btn btn-primary btn-sm"
-              [(ngModel)]="d.dir"
+              [(ngModel)]="direction"
               btnRadio="vertical"
               >vertical</label
             >
@@ -257,8 +258,9 @@ export class GeekDemoComponent extends AComponent {
   @ViewChild(SortableComponent, { static: false })
   sortableComponent: SortableComponent;
 
+  direction: IAreaDirection = 'horizontal';
+
   d = {
-    dir: 'horizontal',
     restrictMove: true,
     useTransition: true,
     gutterSize: null,
